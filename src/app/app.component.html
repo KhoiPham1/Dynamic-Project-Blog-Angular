@@ -20,7 +20,8 @@
             <a class="nav-link" href="#blog">Danh sách Blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#login">Login</a>
+            <a class="nav-link" href="#login" *ngIf="!loginSvr.isAuthentical()">Login</a>
+            <a class="nav-link" (click)="loginSvr.logout()" *ngIf="loginSvr.isAuthentical()">Logout</a>
           </li>
         </ul>
       </div>
