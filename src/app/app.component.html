@@ -29,5 +29,5 @@
 </header>
 <app-category-blog></app-category-blog>
 <app-detail-blog></app-detail-blog>
-<app-login></app-login>
+<app-login *ngIf="!loginSvr.isAuthentical()"></app-login>
 <router-outlet></router-outlet>
