@@ -1,7 +1,7 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#"><h3>Blog of Dynamic</h3></a>
+      <a class="navbar-brand" href="#"><h3>Blog</h3></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,16 @@
     </div>
   </nav>
 </header>
+<div class="jumbotron jumbotron-fluid height100p banner" id="home">
+  <div class="container h100">
+   <div class="contentBox h100">
+     <div >
+       <h1>Blog Dynamic</h1>
+       <p>Blog Dynamic là nơi mọi chuyện trên trời dưới biển đủ thể loại...................</p>
+     </div>
+   </div>
+  </div>
+</div>
 <app-category-blog></app-category-blog>
 <app-detail-blog></app-detail-blog>
 <app-login *ngIf="!loginSvr.isAuthentical()"></app-login>
