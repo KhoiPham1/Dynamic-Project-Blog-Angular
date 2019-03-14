@@ -8,13 +8,15 @@ import { DetailBlogComponent } from './detail-blog/detail-blog.component';
 import { CategoryBlogComponent } from './category-blog/category-blog.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DetailBlogComponent,
-    CategoryBlogComponent
+    CategoryBlogComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
