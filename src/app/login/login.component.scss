@@ -1,1 +1,36 @@
-@import "~bootstrap/scss/bootstrap";
+.login{
+  position: relative;
+  padding: 100px 0;
+  background: url("https://wallpaperplay.com/walls/full/7/9/b/35079.jpg ");
+  background-size: cover;
+  min-height: 100vh;
+}
+h2{
+  color: #fff;
+}
+//.login form{
+//  //z-index: 1000;
+//  //position: relative;
+//}
+.login .form-control{
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,.2);
+  //height: 50px;
+  border-radius: 0;
+  //background: rgba(0,0,0,.6);
+  //color: #fff;
+  font-size: 1.25rem;
+}
+.login .form-control:focus,
+.login .form-control:hover{
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,1);
+  box-shadow: none;
+}
+.login label{
+  color: #fff;
+  font-size: 1.25re
+;
+}
+

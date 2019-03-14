@@ -1,16 +1,19 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="col col-md-6 offset-md-3 " id="login">
-  <h2 class="text-center">Login</h2>
-  <div class="form-group row">
-    <label class="col">
-      Name
-      <input type="text" formControlName="name" class="form-control">
-    </label>
-  </div>
-  <div class="form-group row">
-    <label class="col">
-      Password
-      <input type="password" formControlName="password" class="form-control">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-dark">Submit</button>
-</form>
+<div class="login">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class=" col col-md-6 offset-md-3 " id="login">
+    <h2 class="text-center">Login</h2>
+    <div class="form-group row">
+      <label class="col">
+        Name
+        <input type="text" formControlName="name" class="form-control">
+      </label>
+    </div>
+    <div class="form-group row">
+      <label class="col">
+        Password
+        <input type="password" formControlName="password" class="form-control">
+      </label>
+    </div>
+    <button type="submit" class="btn btn-dark ">Submit</button>
+  </form>
+
+</div>
