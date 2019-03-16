@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ImageService {
-  private readonly url = 'localhost:8080/image/';
+  private readonly url = 'http://localhost:8080/image/';
 
   constructor(private http: HttpClient) {
   }

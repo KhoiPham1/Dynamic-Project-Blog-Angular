@@ -9,6 +9,8 @@ import { CategoryBlogComponent } from './category-blog/category-blog.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { CreateComponent } from './create/create.component';
+import {QuillModule} from 'ngx-quill';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { CreateComponent } from './create/create.component';
     LoginComponent,
     DetailBlogComponent,
     CategoryBlogComponent,
-    CreateComponent
+    CreateComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    QuillModule
   ],
   providers: [],
   bootstrap: [AppComponent]

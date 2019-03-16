@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BlogService {
-  private readonly url = 'localhost:8080/blog/';
+  private readonly url = 'http://localhost:8080/blog/';
 
   constructor(private http: HttpClient) {
   }

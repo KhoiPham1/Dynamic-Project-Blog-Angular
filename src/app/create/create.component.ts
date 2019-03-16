@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {BlogService} from '../blog.service';
 import {ImageService} from '../image.service';
 import {Router} from '@angular/router';
@@ -7,11 +7,14 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CreateComponent implements OnInit {
   form: FormGroup;
   fileSelect: File;
+  option: string;
+  contentSelect: string;
 
   constructor(private blogSvr: BlogService,
               private imageSvr: ImageService,
@@ -21,11 +24,19 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      title: ['', [Validators.required]],
-      content: ['', [Validators.required]],
-      category: ['', [Validators.required]],
-      imgName: ['', [Validators.required]],
+      title: [''],
+      content: [''],
+      category: [''],
+      nameImg: [''],
     });
+  }
+
+  onOption(event) {
+    this.option = event;
+  }
+
+  onContent(event) {
+    this.contentSelect = event.html;
   }
 
   onSelect(event) {
@@ -34,12 +45,14 @@ export class CreateComponent implements OnInit {
 
   onSubmit() {
     const fb = new FormData();
-    fb.append('file', this.fileSelect, this.fileSelect.name);
+    fb.append('file', this.fileSelect, Date.now() + this.fileSelect.name);
     if (this.form.valid && this.fileSelect.name != null) {
-      this.form.get('imgName').setValue(this.fileSelect.name);
+      this.form.get('nameImg').setValue(`${Date.now() + this.fileSelect.name}`);
+      this.form.get('category').setValue(this.option);
+      this.form.get('content').setValue(this.contentSelect);
       const {value} = this.form;
       this.imageSvr.create(fb).subscribe(res => console.log(res));
-      this.blogSvr.create(value).subscribe(() => this.router.navigate(['create']).then(() => alert('created success')));
+      this.blogSvr.create(value).subscribe(() => this.router.navigate(['home/create']).then(() => alert('created success')));
     }
   }
 }
