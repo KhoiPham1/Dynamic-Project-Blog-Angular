@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { CreateComponent } from './create/create.component';
 import {QuillModule} from 'ngx-quill';
 import { HomeComponent } from './home/home.component';
+import { ViewComponent } from './view/view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     DetailBlogComponent,
     CategoryBlogComponent,
     CreateComponent,
-    HomeComponent
+    HomeComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,

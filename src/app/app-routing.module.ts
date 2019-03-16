@@ -6,6 +6,7 @@ import {CategoryBlogComponent} from './category-blog/category-blog.component';
 import {DetailBlogComponent} from './detail-blog/detail-blog.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
+import {ViewComponent} from './view/view.component';
 
 const routes: Routes = [{
   path: 'home/create',
@@ -23,6 +24,9 @@ const routes: Routes = [{
 }, {
   path: '',
   component: HomeComponent
+}, {
+  path: 'home/:id/view',
+  component: ViewComponent
 }];
 
 @NgModule({
