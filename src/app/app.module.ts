@@ -11,7 +11,11 @@ import {HttpClientModule} from '@angular/common/http';
 import { CreateComponent } from './create/create.component';
 import {QuillModule} from 'ngx-quill';
 import { HomeComponent } from './home/home.component';
+<<<<<<< HEAD
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
+=======
+import { ViewComponent } from './view/view.component';
+>>>>>>> 6ccb977f6fd2b0f5d92e20d58904340dc611751d
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { EditBlogComponent } from './edit-blog/edit-blog.component';
     CategoryBlogComponent,
     CreateComponent,
     HomeComponent,
+<<<<<<< HEAD
     EditBlogComponent
+=======
+    ViewComponent
+>>>>>>> 6ccb977f6fd2b0f5d92e20d58904340dc611751d
   ],
   imports: [
     BrowserModule,
