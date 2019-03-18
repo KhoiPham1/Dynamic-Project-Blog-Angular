@@ -1,5 +1,5 @@
 <section class="sec2" id="blog">
-  <div class="container " *ngFor="let item of listBlog">
+  <div class="container ">
     <div class="row" >
       <div class="offset-sm-2 col-sm-8">
         <div class="headerText text-center">
@@ -8,17 +8,18 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-6" >
+    <div *ngFor="let item of listBlog">
+      <div class="col-sm-4" >
         <div class="blogpost"  data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000" >
           <div class="imgBx">
             <img src="http://localhost:8080/image/{{item.nameImg}}/raw"  class="img-fluid" >
           </div>
           <div class="content">
             <h1>Chủ đề: {{item.title}}</h1>
-            <a class="btn btnD2" [routerLink]="['/home', item.id, 'view']">Đọc Chi Tiết</a>
             <div class="clearfix"></div>
           </div>
+          <a class="btn btnD2" [routerLink]="['/home', item.id, 'view']">Đọc Chi Tiết</a>
+          <a class="btn btnD1" [routerLink]="['/home', item.id, 'edit']" *ngIf="loginSvr.isAuthentical()">Sửa</a>
         </div>
       </div>
     </div>

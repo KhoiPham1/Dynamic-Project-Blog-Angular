@@ -28,7 +28,7 @@ export class BlogService {
   }
 
   updateBlog(blog: Iblog): Observable<Iblog> {
-    return this.http.patch<Iblog>(`${this.url}/${blog.id}`, blog);
+    return this.http.patch<Iblog>(`${this.url}${blog.id}`, blog);
   }
 
   getById(id: number): Observable<Iblog> {

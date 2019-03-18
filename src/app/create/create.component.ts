@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BlogService} from '../blog.service';
 import {ImageService} from '../image.service';
 import {Router} from '@angular/router';
+import {Iblog} from '../iblog';
 
 @Component({
   selector: 'app-create',
@@ -13,8 +14,7 @@ import {Router} from '@angular/router';
 export class CreateComponent implements OnInit {
   form: FormGroup;
   fileSelect: File;
-  option: string;
-  contentSelect: string;
+  blog: Iblog;
 
   constructor(private blogSvr: BlogService,
               private imageSvr: ImageService,
@@ -24,19 +24,11 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      title: [''],
-      content: [''],
-      category: [''],
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      content: ['', [Validators.required, Validators.minLength(3)]],
+      category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
     });
-  }
-
-  onOption(event) {
-    this.option = event;
-  }
-
-  onContent(event) {
-    this.contentSelect = event.html;
   }
 
   onSelect(event) {
@@ -48,11 +40,11 @@ export class CreateComponent implements OnInit {
     fb.append('file', this.fileSelect, Date.now() + this.fileSelect.name);
     if (this.form.valid && this.fileSelect.name != null) {
       this.form.get('nameImg').setValue(`${Date.now() + this.fileSelect.name}`);
-      this.form.get('category').setValue(this.option);
-      this.form.get('content').setValue(this.contentSelect);
       const {value} = this.form;
-      this.imageSvr.create(fb).subscribe(res => console.log(res));
-      this.blogSvr.create(value).subscribe(() => this.router.navigate(['home/create']).then(() => alert('created success')));
+      this.imageSvr.create(fb).subscribe();
+      this.blogSvr.create(value).subscribe(() => {
+        this.router.navigate([`home/list`]).then(() => alert('created success'));
+      });
     }
   }
 }

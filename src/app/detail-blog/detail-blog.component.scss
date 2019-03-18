@@ -1,6 +1,7 @@
 .sec2{
-  position: relative;
+  position: absolute;
   width: 100%;
+  min-height: 100vh;
   padding: 100px 0;
   background: #000;
 }
@@ -14,11 +15,12 @@
 .blogpost{
   position: relative;
   width: 100%;
+  height: 350px;
   margin-top: 30px;
   background: #fff;
 }
 .blogpost .imgBx{
-  height: 400px;
+  height: 200px;
 }
 .blogpost .imgBx img{
   width: 100%;
@@ -36,10 +38,25 @@
 }
 .btnD2,
 .btnD2:hover{
+  position: absolute;
   background: #262626;
   color: #fff;
   border-radius: 30px;
   padding: 10px 20px;
-  float: right;
+  right: 20px;
+  bottom: 20px;
+}
+.btnD1,
+.btnD1:hover{
+  position: absolute;
+  background: #262626;
+  color: #fff;
+  border-radius: 30px;
+  padding: 10px 20px;
+  left: 20px;
+  bottom: 20px;
+}
+.col-sm-4{
+  float: left;
 }
 

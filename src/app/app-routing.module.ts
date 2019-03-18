@@ -7,6 +7,7 @@ import {DetailBlogComponent} from './detail-blog/detail-blog.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {ViewComponent} from './view/view.component';
+import {EditBlogComponent} from './edit-blog/edit-blog.component';
 
 const routes: Routes = [{
   path: 'home/create',
@@ -27,6 +28,9 @@ const routes: Routes = [{
 }, {
   path: 'home/:id/view',
   component: ViewComponent
+}, {
+  path: 'home/:id/edit',
+  component: EditBlogComponent
 }];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BlogService} from '../blog.service';
 import {ImageService} from '../image.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,11 +11,9 @@ import {Iblog} from '../iblog';
   styleUrls: ['./edit-blog.component.scss']
 })
 export class EditBlogComponent implements OnInit {
-  formBlog: FormGroup;
+  form: FormGroup;
   fileSelect: File;
   blog: Iblog;
-  contentSelect: string;
-  option: string;
 
   constructor(private fb: FormBuilder,
               private blogService: BlogService,
@@ -25,17 +23,17 @@ export class EditBlogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formBlog = this.fb.group({
-      title: [''],
-      content: [''],
-      category: [''],
+    this.form = this.fb.group({
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      content: ['', [Validators.required, Validators.minLength(3)]],
+      category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
     });
     const id = +this.route.snapshot.paramMap.get('id');
     this.blogService.getById(id).subscribe(
       next => {
         this.blog = next;
-        this.formBlog.patchValue(this.blog);
+        this.form.patchValue(this.blog);
       },
       error => {
         console.log(error);
@@ -44,28 +42,31 @@ export class EditBlogComponent implements OnInit {
     );
   }
 
-  onOption(event) {
-    this.option = event;
-  }
-
-  onContent(event) {
-    this.contentSelect = event.html;
-  }
-
   onSelect(event) {
     this.fileSelect = event.target.files[0];
   }
 
   onSubmit() {
-    const fb = new FormData();
-    fb.append('file', this.fileSelect, Date.now() + this.fileSelect.name);
-    if (this.formBlog.valid && this.fileSelect.name != null) {
-      this.formBlog.get('nameImg').setValue(`${Date.now() + this.fileSelect.name}`);
-      this.formBlog.get('category').setValue(this.option);
-      this.formBlog.get('content').setValue(this.contentSelect);
-      const {value} = this.formBlog;
+    if (this.form.valid && this.fileSelect != null) {
+      const fb = new FormData();
+      fb.append('file', this.fileSelect, Date.now() + this.fileSelect.name);
+      this.form.get('nameImg').setValue(`${Date.now() + this.fileSelect.name}`);
+      const {value} = this.form;
+      const data = {
+        ...this.blog,
+        ...value
+      };
       this.imgService.create(fb).subscribe(res => console.log(res));
-      this.blogService.updateBlog(value).subscribe(() => this.router.navigate(['home/create']).then(() => alert('created success')));
+      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['home/list']).then(() => alert('created success')));
+    }
+    if (this.form.valid && this.fileSelect == null) {
+      const {value} = this.form;
+      this.form.get('nameImg').setValue(`${this.blog.nameImg}`);
+      const data = {
+        ...this.blog,
+        ...value
+      };
+      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['home/list']).then(() => alert('created success')));
     }
   }
 

@@ -6,12 +6,15 @@
           Title
           <input type="text" formControlName="title" class="form-control" >
         </label>
-      </div>>
+      </div>
+      <div *ngIf="form.get('title').invalid && form.get('title').touched" class="alert alert-danger">
+        At least 3 character!
+      </div>
       <div class="form-group row">
         <label class="col">
           Category
           <br>
-          <select (change)="onOption($event.target.value)">
+          <select (change)="onOption($event.target.value)" formControlName="category">
             <option disabled>---Select one---</option>
             <option >Công nghệ thông tin</option>
             <option>Du lịch</option>
@@ -19,17 +22,23 @@
           </select>
         </label>
       </div>
+      <div *ngIf="form.get('category').invalid && form.get('category').touched" class="alert alert-danger">
+        Choose something!
+      </div>
       <div class="form-group row dat">
         <label class="col">
           Content
-          <quill-editor (onContentChanged)="onContent($event)"></quill-editor>
+          <quill-editor formControlName="content"></quill-editor>
         </label>
+      </div>
+      <div *ngIf="form.get('content').invalid && form.get('content').touched" class="alert alert-danger">
+        At least 3 character!
       </div>
       <div class="form-group row">
         <label class="col">
           Avatar
           <br>
-          <input type="file" (change)="onSelect($event)">
+          <input type="file" (change)="onSelect($event)" >
         </label>
       </div>
       <button type="submit" class="btn btn-dark ">Submit</button>
