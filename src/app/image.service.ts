@@ -14,4 +14,8 @@ export class ImageService {
   create(image: any): Observable<any> {
     return this.http.post<any>(this.url, image);
   }
+
+  delete(image: string): Observable<any> {
+    return this.http.delete(`${this.url}${image}`);
+  }
 }
