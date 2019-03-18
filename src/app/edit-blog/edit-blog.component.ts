@@ -48,6 +48,8 @@ export class EditBlogComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid && this.fileSelect != null) {
+      const post = this.blog;
+      this.imgService.delete(post.nameImg).subscribe();
       const fb = new FormData();
       fb.append('file', this.fileSelect, Date.now() + this.fileSelect.name);
       this.form.get('nameImg').setValue(`${Date.now() + this.fileSelect.name}`);
@@ -57,7 +59,7 @@ export class EditBlogComponent implements OnInit {
         ...value
       };
       this.imgService.create(fb).subscribe(res => console.log(res));
-      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['home/list']).then(() => alert('created success')));
+      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['home/list']).then(() => alert('edited success')));
     }
     if (this.form.valid && this.fileSelect == null) {
       const {value} = this.form;
@@ -66,7 +68,7 @@ export class EditBlogComponent implements OnInit {
         ...this.blog,
         ...value
       };
-      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['home/list']).then(() => alert('created success')));
+      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['home/list']).then(() => alert('edited success')));
     }
   }
 

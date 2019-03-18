@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div *ngFor="let item of listBlog">
+    <div *ngFor="let item of listBlog, index as i">
       <div class="col-sm-4" >
         <div class="blogpost"  data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000" >
           <div class="imgBx">
@@ -20,6 +20,7 @@
           </div>
           <a class="btn btnD2" [routerLink]="['/home', item.id, 'view']">Đọc Chi Tiết</a>
           <a class="btn btnD1" [routerLink]="['/home', item.id, 'edit']" *ngIf="loginSvr.isAuthentical()">Sửa</a>
+          <button class="btn btnD3" (click)="delete(i)" *ngIf="loginSvr.isAuthentical()">Xóa</button>
         </div>
       </div>
     </div>
