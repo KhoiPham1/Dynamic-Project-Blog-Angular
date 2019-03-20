@@ -33,4 +33,35 @@ h2{
   font-size: 1.25re
 ;
 }
+#login{
+  box-shadow: -10px 10px 5px 0 rgba(0,0,0,0.75);
+  background: indigo;
+  padding: 30px;
+  border-radius: 20px;
+}
+.form-control{
+  color: white;
+}
+.col-sm-12{
+  bottom: 0;
+  position: absolute;
+}
+.sci{
+  display: flex;
+
+  justify-content: center;
+}
+.sci li{
+  list-style: none;
+  margin: 0 20px;
+}
+.sci li a {
+  color: #fff;
+  font-size: 2em;
+  transition: 0.5s;
+  display: inline-block;
+}
+.sci li a:hover{
+  color: #000;
+}
 

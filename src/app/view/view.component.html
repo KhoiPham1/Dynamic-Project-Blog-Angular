@@ -1,31 +1,24 @@
 <section class="sec2" id="blog">
   <div>
-    <div class=" col col-md-6 offset-md-3 ">
-      <div class="text-center">
+    <div class=" col col-md-6 offset-md-3 body ">
+      <div class="image">
         <img src="http://localhost:8080/image/{{blog.nameImg}}/raw"  class="img-fluid" >
       </div>
-      <div class="form-group row">
+      <div class="form-group row title">
         <label class="col">
-          Title: {{blog.title}}
+          <h1> {{blog.title}}</h1>
         </label>
       </div>
       <div class="form-group row">
         <label class="col">
-          Category: {{blog.category}}
+          <h4 class="category">Category: {{blog.category.category}}</h4>
         </label>
       </div>
-      <div class="form-group row dat">
-        <label class="col">
-          Content:
-          <br>
+      <div class="form-group row content">
+        <label class="col ">
           <a [innerHTML]="blog.content"></a>
         </label>
       </div>
     </div>
   </div>
 </section>
-
-
-
-
-
