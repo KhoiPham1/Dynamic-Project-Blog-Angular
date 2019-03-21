@@ -14,11 +14,8 @@
         <label class="col">
           Category
           <br>
-          <select (change)="onOption($event.target.value)" formControlName="category">
-            <option disabled>---Select one---</option>
-            <option >Công nghệ thông tin</option>
-            <option>Du lịch</option>
-            <option>Game</option>
+          <select formControlName="category">
+            <option *ngFor="let item of categoryList" [ngValue]="item">{{item.category}}</option>
           </select>
         </label>
       </div>
