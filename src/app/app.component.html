@@ -22,7 +22,7 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" routerLink="home/login" *ngIf="!loginSvr.isAuthentical()">Login</a>
-            <a class="nav-link" (click)="loginSvr.logout()" *ngIf="loginSvr.isAuthentical()">Logout</a>
+            <a class="nav-link" (click)="loginSvr.logout()" style="cursor: pointer" *ngIf="loginSvr.isAuthentical()">Logout</a>
           </li>
         </ul>
       </div>

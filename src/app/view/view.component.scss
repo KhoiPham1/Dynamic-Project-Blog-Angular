@@ -1,46 +1,47 @@
 
-.sec2{
+.sec2 {
   position: relative;
   width: 100%;
   padding: 100px 0;
-<<<<<<< HEAD
-=======
+
   min-height: 100vh;
->>>>>>> 81b549b198a51ffcb1874501f9489e66ff25b737
   background: url("https://i.pinimg.com/originals/29/e8/14/29e8144a9316ea85fc887cc6a2bd40f6.jpg");
 }
-.title{
-  font-family: "Noto Serif" , serif;
+
+.title {
+  font-family: "Noto Serif", serif;
   margin-top: 0;
   padding-left: 10px;
 }
-.category{
+
+.category {
   font-size: 20px;
   padding-left: 10px;
 }
-.col{
+
+.col {
   padding-top: 0;
 }
-.body{
+
+.body {
   border: black 1px solid;
 }
-.content{
+
+.content {
   top: 50px;
   padding-top: 50px;
   clear: both;
 
 }
-<<<<<<< HEAD
-.image{
-  float: left;
-  padding-top: 10px;
-=======
-img {
-  object-fit: cover;
-  width: 200px;
-  height: 200px;
-  float: left;
-  padding-top: 10px;
 
->>>>>>> 81b549b198a51ffcb1874501f9489e66ff25b737
+.image {
+  float: left;
+  padding-top: 10px;
 }
+  img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    float: left;
+    padding-top: 10px;
+  }
