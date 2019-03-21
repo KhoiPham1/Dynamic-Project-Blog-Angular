@@ -4,6 +4,7 @@ import {BlogService} from '../blog.service';
 import {ImageService} from '../image.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Iblog} from '../iblog';
+import {Category} from '../category';
 
 @Component({
   selector: 'app-edit-blog',
@@ -14,6 +15,7 @@ export class EditBlogComponent implements OnInit {
   form: FormGroup;
   fileSelect: File;
   blog: Iblog;
+  categoryList: Category[];
 
   constructor(private fb: FormBuilder,
               private blogService: BlogService,
@@ -29,6 +31,7 @@ export class EditBlogComponent implements OnInit {
       category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
     });
+    this.blogService.getListCategory().subscribe(data => this.categoryList = data);
     const id = +this.route.snapshot.paramMap.get('id');
     this.blogService.getById(id).subscribe(
       next => {

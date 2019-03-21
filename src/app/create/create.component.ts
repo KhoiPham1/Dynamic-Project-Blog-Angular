@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BlogService} from '../blog.service';
 import {ImageService} from '../image.service';
 import {Router} from '@angular/router';
-import {Iblog} from '../iblog';
+import {Category} from '../category';
 
 @Component({
   selector: 'app-create',
@@ -14,7 +14,7 @@ import {Iblog} from '../iblog';
 export class CreateComponent implements OnInit {
   form: FormGroup;
   fileSelect: File;
-  blog: Iblog;
+  categoryList: Category[];
 
   constructor(private blogSvr: BlogService,
               private imageSvr: ImageService,
@@ -29,6 +29,7 @@ export class CreateComponent implements OnInit {
       category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
     });
+    this.blogSvr.getListCategory().subscribe(data => this.categoryList = data);
   }
 
   onSelect(event) {
