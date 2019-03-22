@@ -30,7 +30,8 @@ const routes: Routes = [{
   component: ViewComponent
 }, {
   path: 'home/:id/edit',
-  component: EditBlogComponent
+  component: EditBlogComponent,
+  canActivate: [AuthGuard]
 }];
 
 @NgModule({
