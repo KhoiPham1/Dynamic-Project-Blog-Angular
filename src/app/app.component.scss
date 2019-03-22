@@ -2,6 +2,7 @@
 
 * {
   outline: none !important;
+  //scroll-behavior: smooth;
 }
 
 body {
@@ -22,15 +23,19 @@ p {
   transition: 0.5s;
 }
 
-.navbar.scrolled {
-  background: #000 !important;; // !important kéo xuống thì đen
-  transition: 0.5s; //thời gian làm mờ khi kéo
-}
+//.navbar.scrolled {
+//  background: #000 !important;; // !important kéo xuống thì đen
+//  transition: 0.5s; //thời gian làm mờ khi kéo
+//}
 
-.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-  color: #000;
-  background: #fff;
-}
+//.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+//  color: #000;
+//  background: #fff;
+//}
+
+//.navbar-light .navbar-nav .active > .nav-link:hover {
+//  color: #000;
+//}
 
 .navbar-light .navbar-nav .nav-link {
   color: rgba(255, 255, 255, .8);
@@ -39,7 +44,8 @@ p {
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(255, 255, 255, 1);
-
+  //color: #fff;
+  //background: #fff;
 }
 
 .navbar-light .navbar-brand,
@@ -111,24 +117,25 @@ p {
   font-size: 1.3rem;
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 1rem;
     padding-left: 1rem;
   }
 }
+
 @media (max-width: 992px) {
   .navbar-light[_ngcontent-c0] .navbar-toggler[_ngcontent-c0] {
     background: #fff;
   }
-  .banner{
+  .banner {
     min-height: 100vh;
-    padding: 100px 0 ;
+    padding: 100px 0;
   }
   .contentBox h1,
-  .sec1 h2{
+  .sec1 h2 {
     font-size: 2rem;
-   }
+  }
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 1rem;
     padding-left: 1rem;
@@ -136,8 +143,11 @@ p {
   .sec1 {
     padding: 20px 0;
   }
-  .blogpost .imgBx{
+  .blogpost .imgBx {
     height: 200px;
   }
  }
+
+
+
 

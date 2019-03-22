@@ -1,4 +1,4 @@
-<header>
+<header data-target=".navbar" data-offset="50">
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#"><h3>Blog</h3></a>
@@ -20,10 +20,10 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="home/list">Danh sách Blog</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" routerLink="home/login" *ngIf="!loginSvr.isAuthentical()">Đăng nhập</a>
             <a class="nav-link" (click)="loginSvr.logout()" style="cursor: pointer" *ngIf="loginSvr.isAuthentical()">Đăng xuất</a>
-          </li>
         </ul>
       </div>
     </div>

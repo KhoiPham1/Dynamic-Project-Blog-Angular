@@ -3,7 +3,7 @@
   padding: 100px 0;
   background: url("https://wallpaperplay.com/walls/full/7/9/b/35079.jpg ");
   background-size: cover;
-  min-height: 100vh;
+  height: 100vh;
 }
 h2{
   color: #fff;
@@ -30,8 +30,20 @@ h2{
 }
 .login label{
   color: #fff;
-  font-size: 1.25re
-;
+  font-size: 1.25rem;
+}
+.col-sm-12{
+  bottom: 0px;
+  position: absolute;
+}
+.sci{
+  display: flex;
+
+  justify-content: center;
+}
+.sci li{
+  list-style: none;
+  margin: 0 20px;
 }
 #login{
   box-shadow: -10px 10px 5px 0 rgba(0,0,0,0.75);
