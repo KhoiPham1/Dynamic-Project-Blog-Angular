@@ -62,7 +62,7 @@ export class EditBlogComponent implements OnInit {
         ...value
       };
       this.imgService.create(fb).subscribe(res => console.log(res));
-      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['home/list']).then(() => alert('edited success')));
+      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => alert('edited success')));
     }
     if (this.form.valid && this.fileSelect == null) {
       const {value} = this.form;
@@ -71,7 +71,7 @@ export class EditBlogComponent implements OnInit {
         ...this.blog,
         ...value
       };
-      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['home/list']).then(() => alert('edited success')));
+      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => alert('edited success')));
     }
   }
 

@@ -6,13 +6,25 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DetailBlogComponent } from './detail-blog/detail-blog.component';
 import { CategoryBlogComponent } from './category-blog/category-blog.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { CreateComponent } from './create/create.component';
 import {QuillModule} from 'ngx-quill';
 import { HomeComponent } from './home/home.component';
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
 import { ViewComponent } from './view/view.component';
+import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatButtonModule, MatCheckboxModule, MatFormFieldModule,
+  MatIconModule, MatInputModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatTableModule, MatTabsModule,
+  MatToolbarModule
+} from '@angular/material';
+import { ListAdminComponent } from './list-admin/list-admin.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +35,29 @@ import { ViewComponent } from './view/view.component';
     CreateComponent,
     HomeComponent,
     EditBlogComponent,
-    ViewComponent
+    ViewComponent,
+    UserComponent,
+    AdminComponent,
+    ListAdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    QuillModule
+    QuillModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatSortModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

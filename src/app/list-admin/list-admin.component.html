@@ -1,0 +1,46 @@
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="selectAll()"></mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-checkbox (change)="oneSelect(element)" [checked]="element.boxCheck"></mat-checkbox>
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+    <td mat-cell *matCellDef="let element">
+      {{element.title}}
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+    <td mat-cell *matCellDef="let element">
+      {{element.category.category}}
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Update</th>
+    <td mat-cell *matCellDef="let element">
+      <a [routerLink]="['/admin', element.id, 'edit']">Edit</a>
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="delete(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+    <td mat-footer-cell *matFooterCellDef>
+      <button mat-button color="primary" (click)="deleteSelect()">Delete All</button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumn;sticky:true;"></tr>
+  <tr mat-row *matRowDef="let row;columns:displayedColumn;"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayedColumn;sticky:true;"></tr>
+</table>
