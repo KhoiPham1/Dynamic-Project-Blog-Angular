@@ -12,6 +12,15 @@
     </div>
     <div class="form-group row">
       <label class="col">
+       chose
+        <select (change)="dat($event.target.value)">
+          <option>public</option>
+          <option>private</option>
+        </select>
+      </label>
+    </div>
+    <div class="form-group row">
+      <label class="col">
         Category
         <br>
         <select class="form-control dropdown" formControlName="category">

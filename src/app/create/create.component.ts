@@ -36,7 +36,9 @@ export class CreateComponent implements OnInit {
   onSelect(event) {
     this.fileSelect = event.target.files[0];
   }
-
+  dat(event) {
+    console.log(event);
+  }
   onSubmit() {
     const fb = new FormData();
     fb.append('file', this.fileSelect, Date.now() + this.fileSelect.name);
