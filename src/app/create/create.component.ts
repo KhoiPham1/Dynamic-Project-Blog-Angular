@@ -26,8 +26,9 @@ export class CreateComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       content: ['', [Validators.required, Validators.minLength(3)]],
-      category: ['', [Validators.required, Validators.minLength(3)]],
+      category: ['Select one', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
+      boxCheck: [false]
     });
     this.blogSvr.getListCategory().subscribe(data => this.categoryList = data);
   }
@@ -44,7 +45,7 @@ export class CreateComponent implements OnInit {
       const {value} = this.form;
       this.imageSvr.create(fb).subscribe();
       this.blogSvr.create(value).subscribe(() => {
-        this.router.navigate([`home/list`]).then(() => alert('created success'));
+        this.router.navigate([`admin/list`]).then(() => alert('created success'));
       });
     }
   }

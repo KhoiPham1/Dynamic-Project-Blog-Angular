@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginSvr.user.name === this.form.get('name').value && this.loginSvr.user.password === this.form.get('password').value) {
       this.loginSvr.login();
-      this.router.navigate(['/']).then(() => alert('login success'));
+      this.router.navigate(['admin']).then(() => alert('login success'));
     } else {
       this.router.navigate(['home/login']).then(() => alert('login fail'));
     }
