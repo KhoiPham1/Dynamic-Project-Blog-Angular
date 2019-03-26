@@ -27,12 +27,16 @@
   clear: both;
 
 }
-img {
+.image img {
   object-fit: cover;
   width: 200px;
   height: 200px;
   float: left;
   padding-top: 10px;
+}
+.dat11 {
+  overflow-x: hidden;
+  width: calc(100% - 10px);
 }
 .image{
   float: left;

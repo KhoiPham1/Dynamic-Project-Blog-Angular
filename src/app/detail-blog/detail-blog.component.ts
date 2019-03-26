@@ -12,18 +12,9 @@ import {ImageService} from '../image.service';
 export class DetailBlogComponent implements OnInit {
   listBlog: Iblog[];
   constructor(private blogSvr: BlogService,
-              public loginSvr: LoginService,
-              private imgSvr: ImageService) { }
+              public loginSvr: LoginService) { }
 
   ngOnInit() {
     this.blogSvr.getList().subscribe(data => this.listBlog = data);
-  }
-
-  delete(i) {
-    const blog = this.listBlog[i];
-    this.blogSvr.delete(blog.id).subscribe(() =>
-      this.listBlog = this.listBlog.filter(t => t.id !== blog.id)
-    );
-    this.imgSvr.delete(blog.nameImg).subscribe();
   }
 }

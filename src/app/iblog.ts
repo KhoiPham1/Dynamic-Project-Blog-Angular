@@ -6,4 +6,5 @@ export interface Iblog {
   content: string;
   category: Category;
   nameImg: string;
+  boxCheck: boolean;
 }

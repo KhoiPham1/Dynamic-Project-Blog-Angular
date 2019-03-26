@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -9,21 +9,20 @@ export class LoginService {
     name: 'dat',
     password: 'dat'
   };
-  inter: any;
 
   constructor(private router: Router) {
   }
 
   isAuthentical(): boolean {
-    return !!this.inter;
+    return !!localStorage.getItem('user');
   }
 
   login() {
-    this.inter = true;
+    localStorage.setItem('user', JSON.stringify({token: 'jwt will come later', name: this.user.name}));
   }
 
   logout() {
-    this.inter = null;
+    localStorage.clear();
     this.router.navigate(['/']).then(() => alert('logout success'));
   }
 }

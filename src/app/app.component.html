@@ -1,32 +1,6 @@
-<header data-target=".navbar" data-offset="50">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#"><h3>Blog</h3></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-lg-auto">
-          <li class="nav-item ">
-            <a class="nav-link" routerLink="">Trang chủ <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item" *ngIf="loginSvr.isAuthentical()">
-            <a class="nav-link" routerLink="home/create">Viết Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="home/category">Thể loại</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="home/list">Danh sách Blog</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" routerLink="home/login" *ngIf="!loginSvr.isAuthentical()">Login</a>
-            <a class="nav-link" (click)="loginSvr.logout()" *ngIf="loginSvr.isAuthentical()">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+<a routerLink="home">Get Start</a>
+<a routerLink="admin">
+  <p *ngIf="!loginSvr.isAuthentical()">Login</p>
+  <p *ngIf="loginSvr.isAuthentical()">Admin</p>
+</a>
 <router-outlet></router-outlet>
