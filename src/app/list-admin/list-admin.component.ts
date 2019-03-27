@@ -13,7 +13,7 @@ import {ImageService} from '../image.service';
 export class ListAdminComponent implements OnInit {
   blogList: Iblog[];
   listBlog: Iblog[];
-  displayedColumn: string[] = ['action', 'title', 'category', 'update', 'delete'];
+  displayedColumn: string[] = ['action', 'title', 'category', 'update', 'mode', 'delete'];
   dataSource: any;
   @ViewChild(MatSort) sort: MatSort;
 

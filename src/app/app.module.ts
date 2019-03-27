@@ -18,7 +18,7 @@ import { AdminComponent } from './admin/admin.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCheckboxModule, MatFormFieldModule,
-  MatIconModule, MatInputModule,
+  MatIconModule, MatInputModule, MatOptionModule, MatSelectModule,
   MatSidenavModule,
   MatSortModule,
   MatTableModule, MatTabsModule,
@@ -57,7 +57,9 @@ import { ListAdminComponent } from './list-admin/list-admin.component';
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
