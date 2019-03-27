@@ -38,7 +38,7 @@ export class BlogService {
   getListCategory(): Observable<Category[]> {
     return this.http.get<Category[]>(this.urlCategory);
   }
-  getListBlog(id: number): Observable<Iblog[]> {
+  getCategory(id: number): Observable<Iblog[]> {
     return this.http.get<Iblog[]>(`${this.urlCategory}${id}`);
   }
   createCategory(category: Partial<Category>): Observable<Category> {

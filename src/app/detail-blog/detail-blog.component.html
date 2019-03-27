@@ -25,13 +25,9 @@
         <div class="view">
           <a [routerLink]="['/home', item.id, 'view']"></a>
         </div>
-        <div class="edit">
-          <a class="btn btnD1" [routerLink]="['/home', item.id, 'edit']" *ngIf="loginSvr.isAuthentical()"><i class="fa fa-edit">
-          </i></a>
-        </div>
-          <button (click)="delete(i)" *ngIf="loginSvr.isAuthentical()">X</button>
       </div>
     </div>
   </div>
 </section>
+
 
