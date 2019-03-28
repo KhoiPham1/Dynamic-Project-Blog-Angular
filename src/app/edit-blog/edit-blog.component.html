@@ -40,6 +40,14 @@
           <input type="file" (change)="onSelect($event)" >
         </label>
       </div>
+      <mat-form-field>
+        <mat-label>Select Mode</mat-label>
+        <mat-select formControlName="mode">
+          <mat-option value="Public">Public</mat-option>
+          <mat-option value="Private">Private</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
       <button type="submit" class="btn btn-dark ">Submit</button>
     </form>
   </div>

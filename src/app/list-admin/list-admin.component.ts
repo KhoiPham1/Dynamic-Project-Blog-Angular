@@ -12,9 +12,11 @@ import {ImageService} from '../image.service';
 })
 export class ListAdminComponent implements OnInit, AfterViewInit {
   blogList: Iblog[];
-  displayedColumns: string[] = ['action', 'title', 'category.category', 'update', 'delete'];
+  listBlog: Iblog[];
+  displayedColumn: string[] = ['action', 'title', 'category.category', 'update', 'mode', 'delete'];
   dataSource: any;
   @ViewChild(MatSort) sort: MatPaginator;
+
 
   constructor(private blogSvr: BlogService,
               private imgSvr: ImageService,

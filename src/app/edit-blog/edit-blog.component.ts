@@ -30,6 +30,7 @@ export class EditBlogComponent implements OnInit {
       content: ['', [Validators.required, Validators.minLength(3)]],
       category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
+      mode: ['']
     });
     this.blogService.getListCategory().subscribe(data => this.categoryList = data);
     const id = +this.route.snapshot.paramMap.get('id');
@@ -51,6 +52,12 @@ export class EditBlogComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid && this.fileSelect != null) {
+      if (this.form.get('mode').value === 'Public') {
+        this.form.get('mode').setValue(true);
+      }
+      if (this.form.get('mode').value === 'Private') {
+        this.form.get('mode').setValue(false);
+      }
       const post = this.blog;
       this.imgService.delete(post.nameImg).subscribe();
       const fb = new FormData();
@@ -65,6 +72,12 @@ export class EditBlogComponent implements OnInit {
       this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => alert('edited success')));
     }
     if (this.form.valid && this.fileSelect == null) {
+      if (this.form.get('mode').value === 'Public') {
+        this.form.get('mode').setValue(true);
+      }
+      if (this.form.get('mode').value === 'Private') {
+        this.form.get('mode').setValue(false);
+      }
       const {value} = this.form;
       this.form.get('nameImg').setValue(`${this.blog.nameImg}`);
       const data = {

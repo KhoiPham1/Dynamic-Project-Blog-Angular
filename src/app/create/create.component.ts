@@ -4,6 +4,7 @@ import {BlogService} from '../blog.service';
 import {ImageService} from '../image.service';
 import {Router} from '@angular/router';
 import {Category} from '../category';
+import {Iblog} from "../iblog";
 
 @Component({
   selector: 'app-create',
@@ -12,6 +13,7 @@ import {Category} from '../category';
   encapsulation: ViewEncapsulation.None
 })
 export class CreateComponent implements OnInit {
+  // selected = 'option2';
   form: FormGroup;
   fileSelect: File;
   categoryList: Category[];
@@ -28,7 +30,8 @@ export class CreateComponent implements OnInit {
       content: ['', [Validators.required, Validators.minLength(3)]],
       category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
-      boxCheck: [false]
+      boxCheck: [false],
+      mode: ['']
     });
     this.blogSvr.getListCategory().subscribe(data => this.categoryList = data);
   }
@@ -43,6 +46,12 @@ export class CreateComponent implements OnInit {
     const fb = new FormData();
     fb.append('file', this.fileSelect, Date.now() + this.fileSelect.name);
     if (this.form.valid && this.fileSelect.name != null) {
+      if (this.form.get('mode').value === 'Public') {
+        this.form.get('mode').setValue(true);
+      }
+      if (this.form.get('mode').value === 'Private') {
+        this.form.get('mode').setValue(false);
+      }
       this.form.get('nameImg').setValue(`${Date.now() + this.fileSelect.name}`);
       const {value} = this.form;
       this.imageSvr.create(fb).subscribe();
