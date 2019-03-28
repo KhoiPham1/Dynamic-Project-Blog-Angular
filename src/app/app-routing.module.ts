@@ -11,7 +11,7 @@ import {EditBlogComponent} from './edit-blog/edit-blog.component';
 import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
 import {ListAdminComponent} from './list-admin/list-admin.component';
-import {CategoryAdminComponent} from "./category-admin/category-admin.component";
+import {CategoryAdminComponent} from './category-admin/category-admin.component';
 
 const routes: Routes = [{
   path: 'admin',
@@ -35,7 +35,7 @@ const routes: Routes = [{
     canActivate: [AuthGuard]
   }]
 }, {
-  path: 'home',
+  path: '',
   component: UserComponent,
   children: [{
     path: '',

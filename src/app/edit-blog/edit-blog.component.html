@@ -14,9 +14,11 @@
         <label class="col">
           Category
           <br>
-          <select formControlName="category">
-            <option *ngFor="let item of categoryList" [ngValue]="item">{{item.category}}</option>
-          </select>
+          <mat-form-field>
+          <mat-select formControlName="category" placeholder="{{blog.category.category}}">
+            <mat-option *ngFor="let item of categoryList" [value]="item">{{item.category}}</mat-option>
+          </mat-select>
+          </mat-form-field>
         </label>
       </div>
       <div *ngIf="form.get('category').invalid && form.get('category').touched" class="alert alert-danger">

@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       content: ['', [Validators.required, Validators.minLength(3)]],
-      category: ['Select one', [Validators.required, Validators.minLength(3)]],
+      category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
       boxCheck: [false]
     });
