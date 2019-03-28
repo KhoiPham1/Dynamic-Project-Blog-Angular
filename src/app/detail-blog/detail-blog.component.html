@@ -1,24 +1,26 @@
 <section class="sec2" id="blog">
   <div class="container ">
-    <div class="row" >
+    <div class="row">
       <div class="offset-sm-2 col-sm-8">
         <div class="headerText text-center">
-          <h2  data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000" >Danh sách Blog </h2>
-          <p  data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" >Dưới đây là  blog mới nhất của nhóm Dynamic, mời mọi người lựa chọn </p>
+          <h2 data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000">Danh sách Blog </h2>
+          <p data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">Dưới đây là blog mới nhất của nhóm
+            Dynamic, mời mọi người lựa chọn </p>
         </div>
       </div>
     </div>
+    <div *ngFor="let item of listBlog; index as i ">
     <div class="testimonial">
-      <div class="card" *ngFor="let item of listBlog; index as i">
+      <div class="card" *ngIf="item.mode">
         <div class="layer">
         </div>
         <div class="content">
           <div class="imgBx">
-            <img src="http://localhost:8080/image/{{item.nameImg}}/raw"  class="img-fluid" >
+            <img src="http://localhost:8080/image/{{item.nameImg}}/raw" class="img-fluid">
           </div>
           <div class="detail">
             <h2>Chủ đề: {{item.title}}
-            <br><span>{{item.category.category}}</span>
+              <br><span>{{item.category.category}}</span>
             </h2>
           </div>
         </div>
@@ -26,6 +28,7 @@
           <a [routerLink]="['/home', item.id, 'view']"></a>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
