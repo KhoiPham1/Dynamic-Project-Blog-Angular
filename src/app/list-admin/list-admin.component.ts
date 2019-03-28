@@ -12,8 +12,7 @@ import {ImageService} from '../image.service';
 })
 export class ListAdminComponent implements OnInit, AfterViewInit {
   blogList: Iblog[];
-  listBlog: Iblog[];
-  displayedColumn: string[] = ['action', 'title', 'category.category', 'update', 'mode', 'delete'];
+  displayedColumns: string[] = ['action', 'title', 'category.category', 'update', 'mode', 'delete'];
   dataSource: any;
   @ViewChild(MatSort) sort: MatPaginator;
 
@@ -68,8 +67,10 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.sortingDataAccessor = (item, property) => {
       switch (property) {
-        case 'category.category': return item.category.category;
-        default: return item[property];
+        case 'category.category':
+          return item.category.category;
+        default:
+          return item[property];
       }
     };
     this.dataSource.sort = this.sort;
