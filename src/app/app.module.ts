@@ -17,6 +17,7 @@ import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
+  MatAutocompleteModule,
   MatButtonModule, MatCheckboxModule, MatFormFieldModule,
   MatIconModule, MatInputModule, MatOptionModule, MatSelectModule,
   MatSidenavModule,
@@ -26,6 +27,7 @@ import {
 } from '@angular/material';
 import { ListAdminComponent } from './list-admin/list-admin.component';
 import { CategoryAdminComponent } from './category-admin/category-admin.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { CategoryAdminComponent } from './category-admin/category-admin.componen
     UserComponent,
     AdminComponent,
     ListAdminComponent,
-    CategoryAdminComponent
+    CategoryAdminComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { CategoryAdminComponent } from './category-admin/category-admin.componen
     MatInputModule,
     FormsModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
