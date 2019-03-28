@@ -25,6 +25,7 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { ListAdminComponent } from './list-admin/list-admin.component';
+import { CategoryAdminComponent } from './category-admin/category-admin.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ListAdminComponent } from './list-admin/list-admin.component';
     ViewComponent,
     UserComponent,
     AdminComponent,
-    ListAdminComponent
+    ListAdminComponent,
+    CategoryAdminComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Iblog} from '../iblog';
 import {BlogService} from '../blog.service';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
 import {ImageService} from '../image.service';
 
@@ -10,12 +10,12 @@ import {ImageService} from '../image.service';
   templateUrl: './list-admin.component.html',
   styleUrls: ['./list-admin.component.scss']
 })
-export class ListAdminComponent implements OnInit {
+export class ListAdminComponent implements OnInit, AfterViewInit {
   blogList: Iblog[];
   listBlog: Iblog[];
-  displayedColumn: string[] = ['action', 'title', 'category', 'update', 'mode', 'delete'];
+  displayedColumn: string[] = ['action', 'title', 'category.category', 'update', 'mode', 'delete'];
   dataSource: any;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort) sort: MatPaginator;
 
 
   constructor(private blogSvr: BlogService,
@@ -27,9 +27,7 @@ export class ListAdminComponent implements OnInit {
   ngOnInit() {
     this.blogSvr.getList().subscribe(data => {
       this.dataSource.data = data;
-      this.listBlog = data;
     });
-    this.dataSource.sort = this.sort;
   }
 
   selectAll() {
@@ -65,5 +63,15 @@ export class ListAdminComponent implements OnInit {
         break;
       }
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case 'category.category': return item.category.category;
+        default: return item[property];
+      }
+    };
+    this.dataSource.sort = this.sort;
   }
 }
