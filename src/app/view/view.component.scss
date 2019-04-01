@@ -1,44 +1,16 @@
+.example-card {
+  max-width: 500px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  left: calc(50% - 250px);
+}
 
-.sec2{
-  position: relative;
-  width: 100%;
-  padding: 100px 0;
-  min-height: 100vh;
-  background: url("https://i.pinimg.com/originals/29/e8/14/29e8144a9316ea85fc887cc6a2bd40f6.jpg");
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
 }
-.title{
-  font-family: "Noto Serif" , serif;
-  margin-top: 0;
-  padding-left: 10px;
-}
-.category{
-  font-size: 20px;
-  padding-left: 10px;
-}
-.col{
-  padding-top: 0;
-}
-.body{
-  border: black 1px solid;
-}
-.content{
-  top: 50px;
-  padding-top: 50px;
-  clear: both;
-
-}
-.image img {
-  object-fit: cover;
-  width: 200px;
-  height: 200px;
-  float: left;
-  padding-top: 10px;
-}
-.dat11 {
-  overflow-x: hidden;
+img{
+  margin:0 5px 15px 5px;
   width: calc(100% - 10px);
-}
-.image{
-  float: left;
-  padding-top: 10px;
+  object-fit: cover;
 }

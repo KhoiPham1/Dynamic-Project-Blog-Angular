@@ -4,7 +4,6 @@ import {BlogService} from '../blog.service';
 import {ImageService} from '../image.service';
 import {Router} from '@angular/router';
 import {Category} from '../category';
-import {Iblog} from "../iblog";
 
 @Component({
   selector: 'app-create',
@@ -13,7 +12,6 @@ import {Iblog} from "../iblog";
   encapsulation: ViewEncapsulation.None
 })
 export class CreateComponent implements OnInit {
-  // selected = 'option2';
   form: FormGroup;
   fileSelect: File;
   categoryList: Category[];
@@ -31,7 +29,7 @@ export class CreateComponent implements OnInit {
       category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
       boxCheck: [false],
-      mode: ['']
+      mode: ['', [Validators.required]]
     });
     this.blogSvr.getListCategory().subscribe(data => this.categoryList = data);
   }

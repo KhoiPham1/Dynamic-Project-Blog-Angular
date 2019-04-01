@@ -18,7 +18,7 @@ import { AdminComponent } from './admin/admin.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
-  MatButtonModule, MatCheckboxModule, MatFormFieldModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule,
   MatIconModule, MatInputModule, MatOptionModule, MatSelectModule,
   MatSidenavModule,
   MatSortModule,
@@ -65,7 +65,8 @@ import { ResultComponent } from './result/result.component';
     FormsModule,
     MatOptionModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

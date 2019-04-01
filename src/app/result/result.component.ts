@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {BlogService} from "../blog.service";
-import {Iblog} from "../iblog";
-import {MatSort, MatTableDataSource} from "@angular/material";
-import {ImageService} from "../image.service";
-import {Router} from "@angular/router";
+import {BlogService} from '../blog.service';
+import {Iblog} from '../iblog';
+import {MatSort, MatTableDataSource} from '@angular/material';
+import {ImageService} from '../image.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-result',
@@ -26,16 +26,13 @@ export class ResultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = localStorage.getItem('names')
+    this.name = localStorage.getItem('names');
     console.log(this.name);
     this.blogSvr.getTitle(this.name).subscribe(data => {
       this.dataSource.data = data;
       this.listBlog = data;
     });
     this.dataSource.sort = this.sort;
-
-    // localStorage.setItem('names', null)
-
   }
 
   selectAll() {
