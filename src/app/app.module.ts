@@ -17,7 +17,7 @@ import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCheckboxModule, MatFormFieldModule,
+  MatButtonModule, MatCheckboxModule, MatDialog, MatDialogModule, MatDialogRef, MatFormFieldModule,
   MatIconModule, MatInputModule, MatOptionModule, MatSelectModule,
   MatSidenavModule,
   MatSortModule,
@@ -26,6 +26,7 @@ import {
 } from '@angular/material';
 import { ListAdminComponent } from './list-admin/list-admin.component';
 import { CategoryAdminComponent } from './category-admin/category-admin.component';
+import { DialogoverviewComponent } from './dialogoverview/dialogoverview.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CategoryAdminComponent } from './category-admin/category-admin.componen
     UserComponent,
     AdminComponent,
     ListAdminComponent,
-    CategoryAdminComponent
+    CategoryAdminComponent,
+    DialogoverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { CategoryAdminComponent } from './category-admin/category-admin.componen
     MatInputModule,
     FormsModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

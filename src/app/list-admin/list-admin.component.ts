@@ -1,9 +1,10 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Iblog} from '../iblog';
 import {BlogService} from '../blog.service';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
 import {ImageService} from '../image.service';
+import {DialogoverviewComponent} from "../dialogoverview/dialogoverview.component";
 
 @Component({
   selector: 'app-list-admin',
@@ -19,7 +20,8 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
 
   constructor(private blogSvr: BlogService,
               private imgSvr: ImageService,
-              private router: Router) {
+              private router: Router,
+              public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource<Iblog>(this.blogList);
   }
 
@@ -75,4 +77,13 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
     };
     this.dataSource.sort = this.sort;
   }
+
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(DialogoverviewComponent, {
+  //       width: '250px'
+  //     });
+  // }
 }
+
+//viewaffterinit để sắp xếp category
+
