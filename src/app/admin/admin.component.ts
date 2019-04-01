@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../login.service';
-import {Iblog} from "../iblog";
-import {FormControl} from "@angular/forms";
-import {Observable} from "rxjs";
-import {BlogService} from "../blog.service";
-import {Router} from "@angular/router";
-import {map, startWith} from "rxjs/operators";
+import {Iblog} from '../iblog';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {BlogService} from '../blog.service';
+import {Router} from '@angular/router';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin',
@@ -13,16 +13,15 @@ import {map, startWith} from "rxjs/operators";
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
   listBlog: Iblog[] = [];
-  blogNames: Iblog[];
   name: string;
-
   blogControl = new FormControl();
   filteredBlogs: Observable<Iblog[]>;
 
-  constructor(public loginSvr: LoginService,private blogService: BlogService,
-              private router: Router) { }
+  constructor(public loginSvr: LoginService,
+              private blogService: BlogService,
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.blogService.getList().subscribe(data => this.listBlog = data);
@@ -41,9 +40,11 @@ export class AdminComponent implements OnInit {
   search() {
     console.log(this.name);
     localStorage.setItem('names', this.name);
-    // this.blogService.getBlogByName(this.name).subscribe(data => this.blogNames = data);
-    // location.reload();
+    if (this.router.url !== '/admin/result') {
+      this.router.navigate(['admin/result']);
+    } else {
     this.router.navigate(['admin/result']).then(() => location.reload());
+    }
 
   }
 
@@ -51,5 +52,4 @@ export class AdminComponent implements OnInit {
     const filterValue = value.toLowerCase();
     return this.listBlog.filter(blog => blog.title.toLowerCase().indexOf(filterValue) === 0);
   }
-
 }

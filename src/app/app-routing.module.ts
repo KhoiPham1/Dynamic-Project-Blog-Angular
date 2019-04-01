@@ -12,7 +12,7 @@ import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
 import {ListAdminComponent} from './list-admin/list-admin.component';
 import {CategoryAdminComponent} from './category-admin/category-admin.component';
-import {ResultComponent} from "./result/result.component";
+import {ResultComponent} from './result/result.component';
 
 const routes: Routes = [{
   path: 'admin',
@@ -34,9 +34,13 @@ const routes: Routes = [{
     path: 'category',
     component: CategoryAdminComponent,
     canActivate: [AuthGuard]
-  },{
+  }, {
     path: 'result',
     component: ResultComponent,
+    canActivate: [AuthGuard]
+  }, {
+    path: ':id/view',
+    component: ViewComponent,
     canActivate: [AuthGuard]
   }]
 }, {

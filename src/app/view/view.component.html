@@ -1,26 +1,16 @@
-<section class="sec2" id="blog">
-  <div>
-    <div class=" col col-md-6 offset-md-3 body ">
-      <div class="image">
-        <img src="http://localhost:8080/image/{{blog.nameImg}}/raw"  class="img-fluid" >
-      </div>
-      <div class="form-group row title">
-        <label class="col">
-          <h1> {{blog.title}}</h1>
-        </label>
-      </div>
-      <div class="form-group row">
-        <label class="col">
-          <h4 class="category">Category: {{blog.category.category}}</h4>
-        </label>
-      </div>
-      <div class="form-group row content">
-        <div class="dat11">
-        <label class="col">
-          <a [innerHTML]="blog.content"></a>
-        </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{blog.title}}</mat-card-title>
+    <mat-card-subtitle>{{blog.category.category}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="http://localhost:8080/image/{{blog.nameImg}}/raw" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p [innerHTML]="blog.content">
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

@@ -45,6 +45,9 @@
           <mat-option value="Private">Private</mat-option>
         </mat-select>
       </mat-form-field>
+      <div *ngIf="form.get('mode').invalid && form.get('mode').touched" class="alert alert-danger">
+        Please choose one!
+      </div>
       <br>
       <button type="submit" class="btn btn-dark ">Submit</button>
     </form>
