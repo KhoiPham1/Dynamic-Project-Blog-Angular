@@ -28,6 +28,7 @@ import {
 import { ListAdminComponent } from './list-admin/list-admin.component';
 import { CategoryAdminComponent } from './category-admin/category-admin.component';
 import { ResultComponent } from './result/result.component';
+import { BoldPipe } from './bold.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ResultComponent } from './result/result.component';
     AdminComponent,
     ListAdminComponent,
     CategoryAdminComponent,
-    ResultComponent
+    ResultComponent,
+    BoldPipe
   ],
   imports: [
     BrowserModule,
