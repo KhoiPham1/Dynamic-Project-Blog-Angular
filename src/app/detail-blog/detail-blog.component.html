@@ -9,26 +9,58 @@
         </div>
       </div>
     </div>
-    <div *ngFor="let item of listBlog; index as i ">
-    <div class="testimonial">
-      <div class="card" *ngIf="item.mode">
-        <div class="layer">
-        </div>
-        <div class="content">
-          <div class="imgBx">
-            <img src="http://localhost:8080/image/{{item.nameImg}}/raw" class="img-fluid">
+    <div class="testimonial" *ngIf="loginSvr.isAuthentical()">
+      <div *ngFor="let item of listBlog; index as i ">
+        <div class="card">
+          <div class="layer"></div>
+          <div class="content">
+            <div class="imgBx">
+              <img src="http://localhost:8080/image/{{item.nameImg}}/raw" class="img-fluid">
+            </div>
+            <div class="detail">
+              <h2>Chủ đề: {{item.title}}
+                <br><span>{{item.category.category}}</span>
+              </h2>
+            </div>
           </div>
-          <div class="detail">
-            <h2>Chủ đề: {{item.title}}
-              <br><span>{{item.category.category}}</span>
-            </h2>
+          <div class="view">
+            <a [routerLink]="['/', item.id, 'view']"></a>
           </div>
         </div>
         <div class="view">
           <a [routerLink]="['/', item.id, 'view']"></a>
         </div>
+        <ng-template #other>
+          <div>
+            <a>dat</a>
+          </div>
+        </ng-template>
       </div>
     </div>
+    <div class="testimonial" *ngIf="!loginSvr.isAuthentical()">
+      <div *ngFor="let item of modeBlog; index as i ">
+        <div class="card">
+          <div class="layer"></div>
+          <div class="content">
+            <div class="imgBx">
+              <img src="http://localhost:8080/image/{{item.nameImg}}/raw" class="img-fluid">
+            </div>
+            <div class="detail">
+              <h2>Chủ đề: {{item.title}}
+                <br><span>{{item.category.category}}</span>
+              </h2>
+            </div>
+          </div>
+          <div class="view">
+            <a [routerLink]="['/', item.id, 'view']"></a>
+          </div>
+        </div>
+        <ng-template #other>
+          <div>
+            <a>dat</a>
+          </div>
+        </ng-template>
+      </div>
     </div>
   </div>
 </section>

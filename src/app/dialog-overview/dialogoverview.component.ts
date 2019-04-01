@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA,  MatDialogRef} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+
 
 @Component({
   selector: 'app-dialogoverview',
@@ -8,9 +9,17 @@ import {MAT_DIALOG_DATA,  MatDialogRef} from "@angular/material";
 })
 export class DialogoverviewComponent implements OnInit {
 
-  constructor() {
+
+  constructor(public dialogRef: MatDialogRef<DialogoverviewComponent>,
+              @Inject(MAT_DIALOG_DATA) private data) {
   }
 
   ngOnInit() {
   }
+
+  onNoClick() {
+    this.dialogRef.close(false);
+  }
+
+
 }

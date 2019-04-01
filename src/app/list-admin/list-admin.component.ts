@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Iblog} from '../iblog';
 import {BlogService} from '../blog.service';
-import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
 import {ImageService} from '../image.service';
-import {DialogoverviewComponent} from "../dialogoverview/dialogoverview.component";
+import {DialogService} from '../dialog.service';
 
 @Component({
   selector: 'app-list-admin',
@@ -21,7 +21,7 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
   constructor(private blogSvr: BlogService,
               private imgSvr: ImageService,
               private router: Router,
-              public dialog: MatDialog) {
+              private dialogService: DialogService) {
     this.dataSource = new MatTableDataSource<Iblog>(this.blogList);
   }
 
@@ -42,28 +42,32 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
   }
 
   delete(event) {
-    this.blogSvr.delete(event.id).subscribe(() => {
-      this.dataSource.data = this.dataSource.data.filter(t => t.id !== event.id);
-      this.router.navigate(['admin/list']).then(() => alert('deleted success'));
+    this.dialogService.openConfirmDialog('Do you want to delete ?')
+      .afterClosed().subscribe(res => {
+      if (res) {
+        this.blogSvr.delete(event.id).subscribe(() => {
+          this.dataSource.data = this.dataSource.data.filter(t => t.id !== event.id);
+        });
+        this.imgSvr.delete(event.nameImg).subscribe();
+      }
     });
-    this.imgSvr.delete(event.nameImg).subscribe();
   }
 
   deleteSelect() {
-    for (const elm of this.dataSource.data) {
-      if (elm.boxCheck === true) {
-        this.blogSvr.delete(elm.id).subscribe(() => {
-          this.dataSource.data = this.dataSource.data.filter(t => t.id !== elm.id);
-        });
-        this.imgSvr.delete(elm.nameImg).subscribe();
+    this.dialogService.openConfirmDialog('Do you want to delete ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          for (const elm of this.dataSource.data) {
+            if (elm.boxCheck === true) {
+              this.blogSvr.delete(elm.id).subscribe(() => {
+                this.dataSource.data = this.dataSource.data.filter(t => t.id !== elm.id);
+              });
+              this.imgSvr.delete(elm.nameImg).subscribe();
+            }
+          }
+        }
       }
-    }
-    for (const elm of this.dataSource.data) {
-      if (elm.boxCheck === true) {
-        this.router.navigate(['admin/list']).then(() => alert('deleted success'));
-        break;
-      }
-    }
+    );
   }
 
   ngAfterViewInit(): void {
@@ -77,13 +81,7 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
     };
     this.dataSource.sort = this.sort;
   }
-
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(DialogoverviewComponent, {
-  //       width: '250px'
-  //     });
-  // }
 }
 
-//viewaffterinit để sắp xếp category
+// viewaffterinit để sắp xếp category
 
