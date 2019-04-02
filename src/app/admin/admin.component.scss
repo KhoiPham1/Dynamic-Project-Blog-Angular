@@ -37,3 +37,9 @@
   justify-content: center;
   color: white;
 }
+.mat-focused .placeholder {
+  display: none;
+}
+.placeholder:hover{
+display: none;
+}
