@@ -3,8 +3,9 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class=" col col-md-6 offset-md-3 " >
       <div class="form-group row">
         <label class="col">
-          Title
-          <input type="text" formControlName="title" class="form-control" >
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Title" formControlName="title">
+          </mat-form-field>
         </label>
       </div>
       <div *ngIf="form.get('title').invalid && form.get('title').touched" class="alert alert-danger">
