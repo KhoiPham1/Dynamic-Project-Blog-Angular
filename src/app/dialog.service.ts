@@ -13,7 +13,6 @@ export class DialogService {
   openConfirmDialog(mes) {
     return this.dialog.open(DialogoverviewComponent, {
       width: '390px',
-      // disableClose: false,
       panelClass: 'confirm-dialog-container',
       data: {
         message: mes
