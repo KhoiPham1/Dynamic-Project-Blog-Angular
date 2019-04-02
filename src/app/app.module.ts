@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
+import {ToastrModule} from 'ngx-toastr';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {DetailBlogComponent} from './detail-blog/detail-blog.component';
@@ -17,7 +18,7 @@ import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCheckboxModule, MatDialog, MatDialogModule, MatDialogRef, MatFormFieldModule,
+  MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule,
   MatAutocompleteModule,
   MatCardModule,
   MatIconModule, MatInputModule, MatOptionModule, MatSelectModule,
@@ -56,6 +57,11 @@ import {ResultComponent} from './result/result.component';
     HttpClientModule,
     QuillModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    }),
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
