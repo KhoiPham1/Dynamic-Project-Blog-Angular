@@ -5,6 +5,7 @@
 @import '~quill/dist/quill.snow.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~ngx-toastr/toastr.css";
 
 .confirm-dialog-container #yes-button{
   margin-top: 28px;
@@ -47,5 +48,8 @@
 }
 .khoi{
   height: 100px;
+}
+#toast-container > div {
+  opacity: 1;
 }
 

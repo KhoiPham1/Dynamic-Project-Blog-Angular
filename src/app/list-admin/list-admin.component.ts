@@ -5,6 +5,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
 import {ImageService} from '../image.service';
 import {DialogService} from '../dialog.service';
+import {NotificationService} from '../notification.service';
 
 @Component({
   selector: 'app-list-admin',
@@ -21,7 +22,8 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
   constructor(private blogSvr: BlogService,
               private imgSvr: ImageService,
               private router: Router,
-              private dialogService: DialogService) {
+              private dialogService: DialogService,
+              private notifi: NotificationService) {
     this.dataSource = new MatTableDataSource<Iblog>(this.blogList);
   }
 
@@ -44,13 +46,15 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
   delete(event) {
     this.dialogService.openConfirmDialog('Do you want to delete ?')
       .afterClosed().subscribe(res => {
-      if (res) {
-        this.blogSvr.delete(event.id).subscribe(() => {
-          this.dataSource.data = this.dataSource.data.filter(t => t.id !== event.id);
-        });
-        this.imgSvr.delete(event.nameImg).subscribe();
+        if (res) {
+          this.blogSvr.delete(event.id).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(t => t.id !== event.id);
+          });
+          this.imgSvr.delete(event.nameImg).subscribe();
+          this.notifi.showSuccess();
+        }
       }
-    });
+    );
   }
 
   deleteSelect() {
@@ -63,6 +67,7 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
                 this.dataSource.data = this.dataSource.data.filter(t => t.id !== elm.id);
               });
               this.imgSvr.delete(elm.nameImg).subscribe();
+              this.notifi.showSuccess();
             }
           }
         }
