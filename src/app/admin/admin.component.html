@@ -22,8 +22,8 @@
             <mat-placeholder class="placeholder">Search</mat-placeholder>
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let blog of filteredBlogs | async" [value]="blog.title">
-                <!--<a [routerLink]="['/admin', blog.id, 'edit']">{{blog.title}}</a>-->
-                <span>{{blog.title}}</span>
+                <span [innerHTML]="blog.title | bold: toHighlight"></span>
+                <span></span>
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
