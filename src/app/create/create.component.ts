@@ -4,6 +4,7 @@ import {BlogService} from '../blog.service';
 import {ImageService} from '../image.service';
 import {Router} from '@angular/router';
 import {Category} from '../category';
+import {NotificationService} from "../notification.service";
 
 @Component({
   selector: 'app-create',
@@ -19,7 +20,8 @@ export class CreateComponent implements OnInit {
   constructor(private blogSvr: BlogService,
               private imageSvr: ImageService,
               private fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private notif: NotificationService) {
   }
 
   ngOnInit() {
@@ -54,7 +56,7 @@ export class CreateComponent implements OnInit {
       const {value} = this.form;
       this.imageSvr.create(fb).subscribe();
       this.blogSvr.create(value).subscribe(() => {
-        this.router.navigate([`admin/list`]).then(() => alert('created success'));
+        this.router.navigate([`admin/list`]).then(() => this.notif.createSuccess());
       });
     }
   }

@@ -5,6 +5,7 @@ import {ImageService} from '../image.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Iblog} from '../iblog';
 import {Category} from '../category';
+import {NotificationService} from "../notification.service";
 
 @Component({
   selector: 'app-edit-blog',
@@ -21,6 +22,7 @@ export class EditBlogComponent implements OnInit {
               private blogService: BlogService,
               private imgService: ImageService,
               private router: Router,
+              private nofi: NotificationService,
               private route: ActivatedRoute) {
   }
 
@@ -69,7 +71,7 @@ export class EditBlogComponent implements OnInit {
         ...value
       };
       this.imgService.create(fb).subscribe(res => console.log(res));
-      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => alert('edited success')));
+      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => this.nofi.showEditSuccess()));
     }
     if (this.form.valid && this.fileSelect == null) {
       if (this.form.get('mode').value === 'Public') {
@@ -84,7 +86,7 @@ export class EditBlogComponent implements OnInit {
         ...this.blog,
         ...value
       };
-      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => alert('edited success')));
+      this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => this.nofi.showEditSuccess()));
     }
   }
 
