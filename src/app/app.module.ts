@@ -61,7 +61,7 @@ import {DialogoverviewComponent} from './dialog-overview/dialogoverview.componen
     QuillModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 2000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
     }),
