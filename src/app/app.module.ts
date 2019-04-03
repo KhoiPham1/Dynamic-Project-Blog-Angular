@@ -28,13 +28,10 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {ListAdminComponent} from './list-admin/list-admin.component';
-import {CategoryAdminComponent} from './category-admin/category-admin.component';
 import {ResultComponent} from './result/result.component';
 import {BoldPipe} from './bold.pipe';
-import {ListAdminComponent} from './list-admin/list-admin.component';
-import {CategoryAdminComponent} from './category-admin/category-admin.component';
 import {DialogoverviewComponent} from './dialog-overview/dialogoverview.component';
-import {ResultComponent} from './result/result.component';
+import {CategoryAdminComponent} from './category-admin/category-admin.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +61,7 @@ import {ResultComponent} from './result/result.component';
     QuillModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 3000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
     }),

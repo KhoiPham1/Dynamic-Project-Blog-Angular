@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
   name: string;
   blogControl = new FormControl();
   filteredBlogs: Observable<Iblog[]>;
-  toHighlight: string = '';
+  toHighlight = '';
 
   constructor(public loginSvr: LoginService,
               private blogService: BlogService,
@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
     this.filteredBlogs = this.blogControl.valueChanges
       .pipe(
         startWith(''),
-        map(blog => blog ? this.filterBlogs(blog) : this.listBlog.slice(0,0))
+        map(blog => blog ? this.filterBlogs(blog) : this.listBlog.slice(0, 0))
       );
   }
 

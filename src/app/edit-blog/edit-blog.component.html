@@ -1,6 +1,6 @@
 <section class="sec2" id="blog">
   <div class="create">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class=" col col-md-6 offset-md-3 " >
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class=" col col-md-6 offset-md-3 ">
       <div class="form-group row">
         <label class="col">
           <mat-form-field class="example-full-width">
@@ -16,9 +16,9 @@
           Category
           <br>
           <mat-form-field>
-          <mat-select formControlName="category" placeholder="{{blog.category.category}}">
-            <mat-option *ngFor="let item of categoryList" [value]="item">{{item.category}}</mat-option>
-          </mat-select>
+            <mat-select formControlName="category" placeholder="{{blog.category.category}}">
+              <mat-option *ngFor="let item of categoryList" [value]="item">{{item.category}}</mat-option>
+            </mat-select>
           </mat-form-field>
         </label>
       </div>
@@ -38,7 +38,7 @@
         <label class="col">
           Avatar
           <br>
-          <input type="file" (change)="onSelect($event)" >
+          <input type="file" (change)="onSelect($event)">
         </label>
       </div>
       <mat-form-field>
