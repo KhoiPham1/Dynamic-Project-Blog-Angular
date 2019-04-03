@@ -27,10 +27,10 @@ import {
   MatTableModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import { ListAdminComponent } from './list-admin/list-admin.component';
-import { CategoryAdminComponent } from './category-admin/category-admin.component';
-import { ResultComponent } from './result/result.component';
-import { BoldPipe } from './bold.pipe';
+import {ListAdminComponent} from './list-admin/list-admin.component';
+import {CategoryAdminComponent} from './category-admin/category-admin.component';
+import {ResultComponent} from './result/result.component';
+import {BoldPipe} from './bold.pipe';
 import {ListAdminComponent} from './list-admin/list-admin.component';
 import {CategoryAdminComponent} from './category-admin/category-admin.component';
 import {DialogoverviewComponent} from './dialog-overview/dialogoverview.component';
@@ -51,7 +51,7 @@ import {ResultComponent} from './result/result.component';
     ListAdminComponent,
     CategoryAdminComponent,
     ResultComponent,
-    BoldPipe
+    BoldPipe,
     DialogoverviewComponent,
     ResultComponent
   ],
