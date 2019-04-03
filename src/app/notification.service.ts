@@ -12,8 +12,4 @@ export class NotificationService {
   showSuccess() {
     this.toast.success('Delete Success', 'Notification');
   }
-
-  loginFail() {
-    this.toast.warning('sai name or pass', 'Notification');
-  }
 }
