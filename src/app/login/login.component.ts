@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../login.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
+import {NotificationService} from "../notification.service";
 
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginSvr: LoginService,
               private fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private notif: NotificationService) {
   }
 
   ngOnInit() {
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginSvr.user.name === this.form.get('name').value && this.loginSvr.user.password === this.form.get('password').value) {
       this.loginSvr.login();
-      this.router.navigate(['admin']).then(() => alert('login success'));
+      this.router.navigate(['admin']).then(() => this.notif.showLoginSuccess());
     } else {
       this.router.navigate(['home/login']).then(() => alert('login fail'));
     }
