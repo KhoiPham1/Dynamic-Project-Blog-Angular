@@ -12,4 +12,12 @@ export class NotificationService {
   showSuccess() {
     this.toast.success('Delete Success', 'Notification');
   }
+
+  createSuccess() {
+    this.toast.success('Create Success', "Notification")
+  }
+
+  showEditSuccess() {
+    this.toast.success('Update Success', "Notification")
+  }
 }
