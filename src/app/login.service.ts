@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {NotificationService} from "./notification.service";
+import {NotificationService} from './notification.service';
 
 @Injectable({
   providedIn: 'root'

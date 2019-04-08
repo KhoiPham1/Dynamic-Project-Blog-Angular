@@ -1,52 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400');
 
-* {
-  outline: none !important;
-}
-
 body {
-  font-family: 'Poppins', sans-serif;
-}
-
-header {
-  position: relative;
-  z-index: 1000000;
-}
-
-p {
-  font-size: 1.15rem;
-}
-
-.navbar {
-  background: #000 !important;
-  transition: 0.5s;
-}
-
-//.navbar.scrolled {
-//  background: #000 !important;; // !important k�o xu?ng th� ?en
-//  transition: 0.5s; //th?i gian l�m m? khi k�o
-//}
-
-.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-  color: #000;
-  background: #fff;
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, .8);
-}
-
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link:focus {
-  color: rgba(255, 255, 255, 1);
-
-}
-
-.navbar-light .navbar-brand,
-.navbar-light .navbar-brand:hover,
-.navbar-light .navbar-brand:focus,
-.navbar-light .navbar-brand:visited {
-  color: rgba(255, 255, 255, 1);
+  background: transparent;
 }
 
 .banner {
@@ -56,12 +11,10 @@ p {
   height: 100vh;
   background: url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
   background-size: cover;
-  margin-bottom: 0;
+  z-index: 1;
 }
 
-.banner:before,
-.sec2:before,
-.login:before {
+.banner:before{
   content: '';
   position: absolute;
   top: 0;
@@ -69,11 +22,10 @@ p {
   width: 100%;
   height: 400px;
   background: linear-gradient(#000, transparent);
+  z-index: 1;
 }
 
-.banner:after,
-.sec2:after,
-.login:after {
+.banner:after {
   content: '';
   position: absolute;
   top: 0;
@@ -81,6 +33,7 @@ p {
   width: 100%;
   height: 400px;
   background: linear-gradient(#000, transparent);
+  z-index: 1;
 }
 
 .height100p {
@@ -110,17 +63,7 @@ p {
   color: #fff;
   font-size: 1.3rem;
 }
-
-@media (min-width: 992px){
-  .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-}
 @media (max-width: 992px) {
-  .navbar-light[_ngcontent-c0] .navbar-toggler[_ngcontent-c0] {
-    background: white;
-  }
   .banner{
     min-height: 100vh;
     padding: 100px 0 ;
@@ -128,16 +71,6 @@ p {
   .contentBox h1,
   .sec1 h2{
     font-size: 2rem;
-  }
-  .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-  .sec1 {
-    padding: 20px 0;
-  }
-  .blogpost .imgBx{
-    height: 200px;
   }
 }
 

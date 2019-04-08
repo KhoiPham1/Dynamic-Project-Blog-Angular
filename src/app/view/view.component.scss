@@ -2,7 +2,6 @@
   max-width: 500px;
   margin-top: 100px;
   margin-bottom: 100px;
-  left: calc(50% - 250px);
 }
 
 .example-header-image {
@@ -15,3 +14,16 @@ img{
   object-fit: cover;
 }
 
+.phamdat{
+  max-width: 100%;
+}
+.phamdat1{
+  width: 120px;
+}
+@media (min-width: 992px) {
+  .example-card {
+    left: calc(50% - 250px);
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}

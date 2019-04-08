@@ -53,9 +53,6 @@ const routes: Routes = [{
     path: 'list',
     component: DetailBlogComponent,
   }, {
-    path: 'category',
-    component: CategoryBlogComponent
-  }, {
     path: 'login',
     component: LoginComponent
   }, {
