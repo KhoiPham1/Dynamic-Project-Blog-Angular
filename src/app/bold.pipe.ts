@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'bold'
@@ -7,7 +7,7 @@ export class BoldPipe implements PipeTransform {
 
   transform(text: string, search): string {
     const pattern = search
-      .replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&")
+      .replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&')
       .split(' ')
       .filter(t => t.length > 0)
       .join('|');

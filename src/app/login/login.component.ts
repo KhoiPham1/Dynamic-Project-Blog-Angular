@@ -5,8 +5,6 @@ import {Router} from '@angular/router';
 import {NotificationService} from "../notification.service";
 import swal from 'sweetalert';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,8 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginSvr: LoginService,
               private fb: FormBuilder,
-              private router: Router,
-              private notif: NotificationService) {
+              private router: Router) {
   }
 
   ngOnInit() {

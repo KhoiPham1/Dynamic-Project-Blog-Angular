@@ -22,10 +22,10 @@ p {
   transition: 0.5s;
 }
 
-.navbar.scrolled {
-  background: #000 !important;; // !important k�o xu?ng th� ?en
-  transition: 0.5s; //th?i gian l�m m? khi k�o
-}
+//.navbar.scrolled {
+//  background: #000 !important;; // !important k�o xu?ng th� ?en
+//  transition: 0.5s; //th?i gian l�m m? khi k�o
+//}
 
 .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
   color: #000;
@@ -119,7 +119,7 @@ p {
 }
 @media (max-width: 992px) {
   .navbar-light[_ngcontent-c0] .navbar-toggler[_ngcontent-c0] {
-    background: #fff;
+    background: white;
   }
   .banner{
     min-height: 100vh;

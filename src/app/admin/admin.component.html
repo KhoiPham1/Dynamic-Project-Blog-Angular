@@ -18,7 +18,8 @@
 
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto" [formControl]="blogControl" (change)="getName($event.target.value)">
+            <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="blogControl" (change)="getName($event.target.value)">
+            <mat-placeholder class="placeholder">Search</mat-placeholder>
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let blog of filteredBlogs | async" [value]="blog.title">
                 <span [innerHTML]="blog.title | bold: toHighlight"></span>
