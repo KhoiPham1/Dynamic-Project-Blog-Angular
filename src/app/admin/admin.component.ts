@@ -53,7 +53,7 @@ export class AdminComponent implements OnInit {
     // const filterValue = value.toLowerCase();
     // return value ? this.listBlog.filter(blog => blog.title.toLowerCase().indexOf(filterValue) === 0) : [];
     this.toHighlight = name;
-    return this.listBlog.filter(state =>
-      state.title.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    return name ? this.listBlog.filter(state =>
+      state.title.toLowerCase().indexOf(name.toLowerCase()) === 0) : [];
   }
 }
