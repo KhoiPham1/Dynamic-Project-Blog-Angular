@@ -20,4 +20,11 @@ export class NotificationService {
   showEditSuccess() {
     this.toast.success('Update Success', "Notification")
   }
+
+  showLogoutSuccess() {
+    this.toast.success('Logout Success', 'Notification')
+  }
+  showLoginSuccess() {
+    this.toast.success('Login Success', 'Notification')
+  }
 }

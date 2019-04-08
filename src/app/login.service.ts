@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
+import {NotificationService} from "./notification.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class LoginService {
     password: 'dat'
   };
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private notif: NotificationService) {
   }
 
   isAuthentical(): boolean {
@@ -23,6 +25,6 @@ export class LoginService {
 
   logout() {
     localStorage.clear();
-    this.router.navigate(['/']).then(() => alert('logout success'));
+    this.router.navigate(['/']).then(() => this.notif.showLogoutSuccess());
   }
 }
