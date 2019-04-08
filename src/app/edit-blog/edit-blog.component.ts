@@ -5,7 +5,7 @@ import {ImageService} from '../image.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Iblog} from '../iblog';
 import {Category} from '../category';
-import {NotificationService} from "../notification.service";
+import {NotificationService} from '../notification.service';
 
 @Component({
   selector: 'app-edit-blog',
@@ -17,6 +17,9 @@ export class EditBlogComponent implements OnInit {
   fileSelect: File;
   blog: Iblog;
   categoryList: Category[];
+  category: string;
+  chooseOne = true;
+  chooseTwo = true;
 
   constructor(private fb: FormBuilder,
               private blogService: BlogService,
@@ -30,11 +33,10 @@ export class EditBlogComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       content: ['', [Validators.required, Validators.minLength(3)]],
-      category: ['', [Validators.required, Validators.minLength(3)]],
+      category: [null, [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
       mode: ['']
     });
-    this.blogService.getListCategory().subscribe(data => this.categoryList = data);
     const id = +this.route.snapshot.paramMap.get('id');
     this.blogService.getById(id).subscribe(
       next => {
@@ -46,20 +48,40 @@ export class EditBlogComponent implements OnInit {
         this.blog = null;
       }
     );
+    this.blogService.getListCategory().subscribe(data => {
+      this.categoryList = data;
+      for (const item of this.categoryList) {
+        if (item.category !== this.blog.category.category) {
+          this.category = item.category;
+        }
+      }
+    });
   }
 
   onSelect(event) {
     this.fileSelect = event.target.files[0];
   }
 
+  chooseOneTime() {
+    this.chooseOne = false;
+  }
+
+  chooseTwoTime() {
+    this.chooseTwo = false;
+  }
+
+  chooseMode() {
+    if (this.form.get('mode').value === 'Public') {
+      this.form.get('mode').setValue(true);
+    }
+    if (this.form.get('mode').value === 'Private') {
+      this.form.get('mode').setValue(false);
+    }
+  }
+
   onSubmit() {
     if (this.form.valid && this.fileSelect != null) {
-      if (this.form.get('mode').value === 'Public') {
-        this.form.get('mode').setValue(true);
-      }
-      if (this.form.get('mode').value === 'Private') {
-        this.form.get('mode').setValue(false);
-      }
+      this.chooseMode();
       const post = this.blog;
       this.imgService.delete(post.nameImg).subscribe();
       const fb = new FormData();
@@ -74,12 +96,7 @@ export class EditBlogComponent implements OnInit {
       this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => this.nofi.showEditSuccess()));
     }
     if (this.form.valid && this.fileSelect == null) {
-      if (this.form.get('mode').value === 'Public') {
-        this.form.get('mode').setValue(true);
-      }
-      if (this.form.get('mode').value === 'Private') {
-        this.form.get('mode').setValue(false);
-      }
+      this.chooseMode();
       const {value} = this.form;
       this.form.get('nameImg').setValue(`${this.blog.nameImg}`);
       const data = {
@@ -89,5 +106,4 @@ export class EditBlogComponent implements OnInit {
       this.blogService.updateBlog(data).subscribe(() => this.router.navigate(['admin/list']).then(() => this.nofi.showEditSuccess()));
     }
   }
-
 }

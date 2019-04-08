@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   blogControl = new FormControl();
   filteredBlogs: Observable<Iblog[]>;
   toHighlight = '';
+  display: string;
 
   constructor(public loginSvr: LoginService,
               private blogService: BlogService,
@@ -36,6 +37,11 @@ export class AdminComponent implements OnInit {
 
   getName(event) {
     this.name = event;
+    if (event !== '') {
+      this.display = 'none';
+    } else {
+      this.display = 'contents';
+    }
   }
 
   search() {

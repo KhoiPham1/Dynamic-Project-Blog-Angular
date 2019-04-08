@@ -6,7 +6,6 @@ import {ToastrModule} from 'ngx-toastr';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {DetailBlogComponent} from './detail-blog/detail-blog.component';
-import {CategoryBlogComponent} from './category-blog/category-blog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CreateComponent} from './create/create.component';
@@ -38,7 +37,6 @@ import {DialogoverviewComponent} from './dialog-overview/dialogoverview.componen
     AppComponent,
     LoginComponent,
     DetailBlogComponent,
-    CategoryBlogComponent,
     CreateComponent,
     HomeComponent,
     EditBlogComponent,
@@ -62,7 +60,7 @@ import {DialogoverviewComponent} from './dialog-overview/dialogoverview.componen
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 2000,
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-bottom-right',
       preventDuplicates: true
     }),
     MatButtonModule,

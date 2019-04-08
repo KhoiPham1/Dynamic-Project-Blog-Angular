@@ -14,17 +14,17 @@ export class NotificationService {
   }
 
   createSuccess() {
-    this.toast.success('Create Success', "Notification")
+    this.toast.success('Create Success', 'Notification');
   }
 
   showEditSuccess() {
-    this.toast.success('Update Success', "Notification")
+    this.toast.success('Update Success', 'Notification');
   }
 
   showLogoutSuccess() {
-    this.toast.success('Logout Success', 'Notification')
+    this.toast.success('Logout Success', 'Notification');
   }
   showLoginSuccess() {
-    this.toast.success('Login Success', 'Notification')
+    this.toast.success('Login Success', 'Notification');
   }
 }
