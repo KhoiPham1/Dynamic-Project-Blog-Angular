@@ -44,8 +44,10 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  chooseName(event) {
+    this.name = event;
+  }
   search() {
-    console.log(this.name);
     localStorage.setItem('names', this.name);
     if (this.router.url !== '/admin/result') {
       this.router.navigate(['admin/result']);
