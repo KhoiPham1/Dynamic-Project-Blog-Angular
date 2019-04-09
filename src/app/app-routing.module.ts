@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {CreateComponent} from './create/create.component';
 import {AuthGuard} from './auth.guard';
-import {CategoryBlogComponent} from './category-blog/category-blog.component';
 import {DetailBlogComponent} from './detail-blog/detail-blog.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';

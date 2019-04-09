@@ -51,8 +51,8 @@
           Mode
           <br>
           <mat-form-field>
-            <mat-placeholder *ngIf="blog.mode && chooseTwo">Public</mat-placeholder>
-            <mat-placeholder *ngIf="!blog.mode && chooseTwo">Private</mat-placeholder>
+            <mat-placeholder *ngIf="mode && chooseTwo">Public</mat-placeholder>
+            <mat-placeholder *ngIf="!mode && chooseTwo">Private</mat-placeholder>
             <mat-select formControlName="mode">
               <mat-option value="Public" (click)="chooseTwoTime()">Public</mat-option>
               <mat-option value="Private" (click)="chooseTwoTime()">Private</mat-option>

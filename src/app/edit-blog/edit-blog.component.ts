@@ -18,6 +18,7 @@ export class EditBlogComponent implements OnInit {
   blog: Iblog;
   categoryList: Category[];
   category: string;
+  mode: boolean;
   chooseOne = true;
   chooseTwo = true;
 
@@ -41,21 +42,10 @@ export class EditBlogComponent implements OnInit {
     this.blogService.getById(id).subscribe(
       next => {
         this.blog = next;
+        this.mode = next.mode;
+        this.category = next.category.category;
         this.form.patchValue(this.blog);
-      },
-      error => {
-        console.log(error);
-        this.blog = null;
-      }
-    );
-    this.blogService.getListCategory().subscribe(data => {
-      this.categoryList = data;
-      for (const item of this.categoryList) {
-        if (item.category !== this.blog.category.category) {
-          this.category = item.category;
-        }
-      }
-    });
+      });
   }
 
   onSelect(event) {
