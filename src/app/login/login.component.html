@@ -1,9 +1,15 @@
 <div class="login">
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class=" col-sm-4 offset-sm-4 " id="login">
+    <div class="form-group row" *ngIf="status">
+      <label class="col text-center">
+        <a class="alert alert-danger word">Username or password is incorrect
+        </a>
+      </label>
+    </div>
     <h2 class="text-center">Login</h2>
     <div class="form-group row">
       <label class="col">
-        Name
+        UserName
         <input type="text" formControlName="name" class="form-control">
       </label>
     </div>
@@ -15,62 +21,6 @@
     </div>
     <button type="submit" class="btn btn-dark ">Submit</button>
   </form>
-  <div class="col-sm-12">
-    <ul class="sci">
-      <li>
-        <a>
-          <i class="fa fa-facebook">
-          </i>
-        </a>
-      </li>
-      <li>
-        <a >
-          <i class="fa fa-twitter">
-          </i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <i class="fa fa-google-plus">
-          </i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <i class="fa fa-instagram">
-          </i>
-        </a>
-      </li>
-    </ul>
-  </div>
-      <div class="col-sm-12">
-        <ul class="sci">
-          <li>
-            <a>
-              <i class="fa fa-facebook">
-              </i>
-            </a>
-          </li>
-          <li>
-            <a >
-              <i class="fa fa-twitter">
-              </i>
-            </a>
-          </li>
-          <li>
-            <a>
-              <i class="fa fa-google-plus">
-              </i>
-            </a>
-          </li>
-          <li>
-            <a>
-              <i class="fa fa-instagram">
-              </i>
-            </a>
-          </li>
-        </ul>
-      </div>
 </div>
 
 

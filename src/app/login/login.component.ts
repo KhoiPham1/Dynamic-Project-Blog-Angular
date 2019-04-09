@@ -11,6 +11,7 @@ import swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  status = false;
 
   constructor(private loginSvr: LoginService,
               private fb: FormBuilder,
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
         cancelButtonText: 'Ok'
       }));
     } else {
-      this.router.navigate(['login']).then(() => alert('login fail'));
+      this.router.navigate(['login']).then(() => this.status = true );
     }
   }
 }
