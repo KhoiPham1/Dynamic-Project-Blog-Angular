@@ -6,13 +6,13 @@
   height: 100vh;
 }
 h2{
-  color: #fff;
+  color: black;
 }
 
 .login .form-control{
   background: transparent;
   border: none;
-  border-bottom: 2px solid rgba(255,255,255,.2);
+  border-bottom: 1px solid black;
   //height: 50px;
   border-radius: 0;
   //background: rgba(0,0,0,.6);
@@ -22,11 +22,11 @@ h2{
 .login .form-control:focus,
 .login .form-control:hover{
   border: none;
-  border-bottom: 2px solid rgba(255,255,255,1);
+  border-bottom: 2px solid black;
   box-shadow: none;
 }
 .login label{
-  color: #fff;
+  color: black;
   font-size: 1.25rem;
 }
 .col-sm-12{
@@ -44,12 +44,12 @@ h2{
 }
 #login{
   box-shadow: -10px 10px 5px 0 rgba(0,0,0,0.75);
-  background: indigo;
+  background: white;
   padding: 30px;
   border-radius: 20px;
 }
 .form-control{
-  color: white;
+  color: black;
 }
 .col-sm-12{
   bottom: 0;
@@ -73,4 +73,7 @@ h2{
 .sci li a:hover{
   color: #000;
 }
-
+.col a {
+  font-size: 14px;
+  color: red;
+}
