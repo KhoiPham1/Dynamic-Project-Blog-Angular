@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   blogControl = new FormControl();
   filteredBlogs: Observable<Iblog[]>;
   toHighlight = '';
+  display: string;
 
   constructor(public loginSvr: LoginService,
               private blogService: BlogService,
@@ -36,6 +37,11 @@ export class AdminComponent implements OnInit {
 
   getName(event) {
     this.name = event;
+    if (event !== '') {
+      this.display = 'none';
+    } else {
+      this.display = 'contents';
+    }
   }
 
   search() {
@@ -50,10 +56,10 @@ export class AdminComponent implements OnInit {
   }
 
   private filterBlogs(name: string): Iblog[] {
-    // const filterValue = value.toLowerCase();
-    // return value ? this.listBlog.filter(blog => blog.title.toLowerCase().indexOf(filterValue) === 0) : [];
+    // const filterValue = name.toLowerCase();
+    // return this.listBlog.filter(blog => blog.title.toLowerCase().indexOf(filterValue) === 0);
     this.toHighlight = name;
-    return this.listBlog.filter(state =>
-      state.title.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    return name ? this.listBlog.filter(state =>
+      state.title.toLowerCase().indexOf(name.toLowerCase()) === 0) : [];
   }
 }

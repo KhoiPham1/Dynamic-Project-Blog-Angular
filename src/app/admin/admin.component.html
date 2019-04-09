@@ -1,5 +1,5 @@
 <mat-sidenav-container class="content">
-  <mat-sidenav #drawer  class="sidenav" mode="side" [opened]="true">
+  <mat-sidenav #drawer  class="sidenav" mode="side">
     <a class="text-center" href="#">Dynamic</a>
     <button color="primary" mat-button routerLink="create">
       <mat-icon>add</mat-icon>Create</button>
@@ -13,12 +13,14 @@
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>Menu</span>
         <span class="spacer"></span>
 
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto" [formControl]="blogControl" (change)="getName($event.target.value)">
+            <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="blogControl" (change)="getName($event.target.value)">
+            <mat-placeholder class="placeholder">
+              <a [style.display]="display">Search</a>
+            </mat-placeholder>
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let blog of filteredBlogs | async" [value]="blog.title">
                 <span [innerHTML]="blog.title | bold: toHighlight"></span>

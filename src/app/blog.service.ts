@@ -15,9 +15,8 @@ export class BlogService {
   constructor(private http: HttpClient) {
   }
 
-  getList(count = -1): Observable<Iblog[]> {
-    return this.http.get<Iblog[]>(this.url).pipe(
-      map(data => data.filter((blog, i) => i > count)));
+  getList(): Observable<Iblog[]> {
+    return this.http.get<Iblog[]>(this.url);
   }
 
   create(blog: Partial<Iblog>): Observable<Iblog> {

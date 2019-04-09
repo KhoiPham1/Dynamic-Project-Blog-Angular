@@ -6,7 +6,6 @@ import {ToastrModule} from 'ngx-toastr';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {DetailBlogComponent} from './detail-blog/detail-blog.component';
-import {CategoryBlogComponent} from './category-blog/category-blog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CreateComponent} from './create/create.component';
@@ -27,19 +26,17 @@ import {
   MatTableModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import {ListAdminComponent} from './list-admin/list-admin.component';
-import {ResultComponent} from './result/result.component';
-import {BoldPipe} from './bold.pipe';
+import { ListAdminComponent } from './list-admin/list-admin.component';
+import { CategoryAdminComponent } from './category-admin/category-admin.component';
+import { ResultComponent } from './result/result.component';
+import { BoldPipe } from './bold.pipe';
 import {DialogoverviewComponent} from './dialog-overview/dialogoverview.component';
-import {CategoryAdminComponent} from './category-admin/category-admin.component';
-import {IconsModule, MDBBootstrapModule, MdbBtnDirective} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DetailBlogComponent,
-    CategoryBlogComponent,
     CreateComponent,
     HomeComponent,
     EditBlogComponent,
@@ -62,7 +59,7 @@ import {IconsModule, MDBBootstrapModule, MdbBtnDirective} from 'angular-bootstra
     QuillModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      timeOut: 2000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
     }),
