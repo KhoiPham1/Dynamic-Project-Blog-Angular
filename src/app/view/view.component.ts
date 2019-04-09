@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Iblog} from '../iblog';
 import {BlogService} from '../blog.service';
 import {ActivatedRoute} from '@angular/router';
@@ -10,12 +10,18 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ViewComponent implements OnInit {
   blog: Iblog;
+  image: string;
+
   constructor(private blogSvr: BlogService,
-              private active: ActivatedRoute) { }
+              private active: ActivatedRoute) {
+  }
 
   ngOnInit() {
     const id = +this.active.snapshot.paramMap.get('id');
-    this.blogSvr.getById(id).subscribe(data => this.blog = data);
+    this.blogSvr.getById(id).subscribe(data => {
+      this.blog = data;
+      this.image = `http://localhost:8080/image/${this.blog.nameImg}/raw`;
+    });
   }
 
 }

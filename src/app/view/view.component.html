@@ -1,12 +1,12 @@
 <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{blog.title}}</mat-card-title>
-    <mat-card-subtitle>{{blog.category.category}}</mat-card-subtitle>
+    <mat-card-title>{{blog?.title}}</mat-card-title>
+    <mat-card-subtitle>{{blog?.category.category}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="http://localhost:8080/image/{{blog.nameImg}}/raw" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="{{image}}" alt="Photo of a Shiba Inu">
   <mat-card-content>
-    <p [innerHTML]="blog.content">
+    <p [innerHTML]="blog?.content">
     </p>
   </mat-card-content>
   <mat-card-actions>
