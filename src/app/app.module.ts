@@ -48,7 +48,7 @@ import {DialogoverviewComponent} from './dialog-overview/dialogoverview.componen
     ResultComponent,
     BoldPipe,
     DialogoverviewComponent,
-    ResultComponent
+    ResultComponent,
   ],
   entryComponents: [DialogoverviewComponent, ListAdminComponent],
   imports: [
@@ -78,7 +78,7 @@ import {DialogoverviewComponent} from './dialog-overview/dialogoverview.componen
     MatSelectModule,
     MatDialogModule,
     MatAutocompleteModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
