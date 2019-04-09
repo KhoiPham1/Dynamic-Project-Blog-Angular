@@ -32,6 +32,7 @@ import {ResultComponent} from './result/result.component';
 import {BoldPipe} from './bold.pipe';
 import {DialogoverviewComponent} from './dialog-overview/dialogoverview.component';
 import {CategoryAdminComponent} from './category-admin/category-admin.component';
+import {IconsModule, MDBBootstrapModule, MdbBtnDirective} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import {CategoryAdminComponent} from './category-admin/category-admin.component'
     ResultComponent,
     BoldPipe,
     DialogoverviewComponent,
-    ResultComponent
+    ResultComponent,
   ],
   entryComponents: [DialogoverviewComponent, ListAdminComponent],
   imports: [
@@ -80,7 +81,7 @@ import {CategoryAdminComponent} from './category-admin/category-admin.component'
     MatSelectModule,
     MatDialogModule,
     MatAutocompleteModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
