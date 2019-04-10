@@ -45,6 +45,7 @@ export class AdminComponent implements OnInit {
   }
 
   chooseName(event) {
+    console.log(event);
     this.name = event;
   }
   search() {
