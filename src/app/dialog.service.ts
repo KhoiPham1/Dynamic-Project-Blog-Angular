@@ -16,7 +16,7 @@ export class DialogService {
       panelClass: 'confirm-dialog-container',
       data: {
         message: mes,
-        content: content
+        content
       }
     });
   }
