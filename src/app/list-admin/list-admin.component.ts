@@ -44,7 +44,8 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
   }
 
   delete(event) {
-    this.dialogService.openConfirmDialog('Do you want to delete ?')
+    console.log(event)
+    this.dialogService.openConfirmDialog('Do you want to delete blog: ' , event.title)
       .afterClosed().subscribe(res => {
         if (res) {
           this.blogSvr.delete(event.id).subscribe(() => {
@@ -58,7 +59,7 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
   }
 
   deleteSelect() {
-    this.dialogService.openConfirmDialog('Do you want to delete ?')
+    this.dialogService.openConfirmDialog('Do you want to delete all ?', '')
       .afterClosed().subscribe(res => {
         if (res) {
           for (const elm of this.dataSource.data) {

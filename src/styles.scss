@@ -16,7 +16,7 @@
   border-radius: 0;
 }
 .confirm-dialog-container span.content-span{
-  padding-left: 80px;
+  padding-left: 60px;
   text-align: center;
   margin-top: 50px;
   font-size: 20px;
@@ -25,11 +25,7 @@
   margin: 5px 5px 15px 5px;
   color: #8f9cb5;
   display: flex;
-  height: 300px;
-}
-
-.confirm-dialog-container #close-icon:hover{
-  cursor: pointer;
+  height: 400px;
 }
 .confirm-dialog-container #no-button{
   height: 40px;
@@ -43,7 +39,7 @@
   padding: 0;
 }
 .khoi{
-  height: 100px;
+  height: auto;
 }
 #toast-container > div {
   opacity: 1;

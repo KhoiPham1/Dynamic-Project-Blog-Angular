@@ -1,7 +1,8 @@
 <!--//cdkFocusInitial để hover  mặc định tại vị trí nút OK-->
 <div class="khoi">
   <div class="content container">
-    <span class="content-span full-width">{{data.message}}</span>
+    <span class="content-span full-width ">{{data.message}}</span><br>
+    <span class="edit-center">{{data.content}}</span>
   </div>
   <button mat-flat-button id="no-button" [mat-dialog-close]="false">Cancel</button>
   <button mat-flat-button id="yes-button" [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
