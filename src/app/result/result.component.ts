@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {BlogService} from '../blog.service';
 import {Iblog} from '../iblog';
 import {MatSort, MatTableDataSource} from '@angular/material';
@@ -10,12 +10,12 @@ import {Router} from '@angular/router';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent implements OnInit {
+export class ResultComponent implements OnInit, AfterViewInit {
 
   name: string;
   blogList: Iblog[];
   listBlog: Iblog[];
-  displayedColumn: string[] = ['action', 'title', 'category', 'update', 'delete'];
+  displayedColumn: string[] = ['action', 'title', 'category.category', 'update', 'delete'];
   dataSource: any;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -64,10 +64,20 @@ export class ResultComponent implements OnInit {
     }
     for (const elm of this.dataSource.data) {
       if (elm.boxCheck === true) {
-        this.router.navigate(['admin/list']).then(() => alert('deleted success'));
+        this.router.navigate(['admin/result']).then(() => alert('deleted success'));
         break;
       }
     }
   }
-
+  ngAfterViewInit(): void {
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case 'category.category':
+          return item.category.category;
+        default:
+          return item[property];
+      }
+    };
+    this.dataSource.sort = this.sort;
+  }
 }

@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {ImageService} from '../image.service';
 import {DialogService} from '../dialog.service';
 import {NotificationService} from '../notification.service';
+import {Category} from '../category';
 
 @Component({
   selector: 'app-list-admin',
@@ -16,6 +17,10 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
   blogList: Iblog[];
   displayedColumns: string[] = ['action', 'title', 'category.category', 'update', 'mode', 'delete'];
   dataSource: any;
+  categoryList: Category[];
+  mode: boolean;
+  arrayInterOne = null;
+  arrayInterTwo = null;
   @ViewChild(MatSort) sort: MatPaginator;
 
 
@@ -31,6 +36,7 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
     this.blogSvr.getList().subscribe(data => {
       this.dataSource.data = data;
     });
+    this.blogSvr.getListCategory().subscribe(data => this.categoryList = data);
   }
 
   selectAll() {
@@ -41,6 +47,63 @@ export class ListAdminComponent implements OnInit, AfterViewInit {
 
   oneSelect(event) {
     event.boxCheck = !event.boxCheck;
+  }
+
+  getCategory(event) {
+    const array = [];
+    this.blogSvr.getList().subscribe(data => {
+      for (const item of data) {
+        if (item.category.category === event) {
+          array.push(item);
+        }
+      }
+      this.arrayInterOne = array;
+    });
+  }
+
+  getMode(event) {
+    this.mode = event === 'Public';
+    const array = [];
+    this.blogSvr.getList().subscribe(data => {
+      for (const item of data) {
+        if (item.mode === this.mode) {
+          array.push(item);
+        }
+      }
+      this.arrayInterTwo = array;
+    });
+  }
+
+  clearOne() {
+    this.arrayInterOne = null;
+  }
+  clearTwo() {
+    this.arrayInterTwo = null;
+  }
+
+  filter() {
+    const array = [];
+    if (this.arrayInterOne !== null && this.arrayInterTwo !== null) {
+      for (const item of this.arrayInterOne) {
+        for (const code of this.arrayInterTwo) {
+          if (item.mode === code.mode && item.category.category === code.category.category) {
+            array.push(item);
+          }
+        }
+      }
+      this.dataSource.data = array;
+    }
+    if (this.arrayInterOne === null && this.arrayInterTwo !== null) {
+      this.dataSource.data = this.arrayInterTwo;
+    }
+    if (this.arrayInterOne !== null && this.arrayInterTwo === null) {
+      this.dataSource.data = this.arrayInterOne;
+    }
+    if (this.arrayInterOne === null && this.arrayInterTwo === null) {
+      this.blogSvr.getList().subscribe(data => {
+        this.dataSource.data = data;
+      });
+    }
   }
 
   delete(event) {

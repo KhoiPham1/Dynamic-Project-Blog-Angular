@@ -1,3 +1,20 @@
+<mat-form-field>
+  <mat-select placeholder="Category">
+    <mat-option (click)="clearOne()">Clear</mat-option>
+    <mat-option *ngFor="let item of categoryList" [value]="item" (click)="getCategory($event.toElement.innerText)">{{item.category}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-select placeholder="Mode">
+    <mat-option (click)="clearTwo()">Clear</mat-option>
+    <mat-option value="Public" (click)="getMode($event.toElement.innerText)">Public</mat-option>
+    <mat-option value="Private" (click)="getMode($event.toElement.innerText)">Private</mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-icon-button (click)="filter()">
+  <mat-icon>filter_list</mat-icon>
+  Filter
+</button>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="action">

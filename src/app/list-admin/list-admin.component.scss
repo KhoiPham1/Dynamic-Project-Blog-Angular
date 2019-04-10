@@ -11,5 +11,15 @@ table {
 
 td, th {
   width: 20%;
+  text-align: center;
 }
-
+::ng-deep .mat-sort-header-container{
+  display: flex;
+  justify-content: center;
+}
+.mat-header-cell{
+  text-align: center;
+}
+mat-form-field{
+  margin: 10px 30px 10px 10px;
+}
