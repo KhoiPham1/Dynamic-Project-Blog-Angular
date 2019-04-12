@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
       title: ['', [Validators.required, Validators.minLength(3)]],
       content: ['', [Validators.required, Validators.minLength(3)]],
       category: ['', [Validators.required, Validators.minLength(3)]],
-      nameImg: [''],
+      nameImg: ['', [Validators.required]],
       boxCheck: [false],
       mode: ['', [Validators.required]]
     });
@@ -39,9 +39,7 @@ export class CreateComponent implements OnInit {
 
   onSelect(event) {
     this.fileSelect = event.target.files[0];
-    if (this.fileSelect !== undefined) {
-      this.isChoose = false;
-    }
+    this.form.get('nameImg').setValue(`${Date.now() + this.fileSelect.name}`);
   }
   dat(event) {
     console.log(event);
@@ -56,7 +54,6 @@ export class CreateComponent implements OnInit {
       if (this.form.get('mode').value === 'Private') {
         this.form.get('mode').setValue(false);
       }
-      this.form.get('nameImg').setValue(`${Date.now() + this.fileSelect.name}`);
       const {value} = this.form;
       this.imageSvr.create(fb).subscribe();
       this.blogSvr.create(value).subscribe(() => {

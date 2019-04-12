@@ -32,16 +32,16 @@ export class CategoryAdminComponent implements OnInit {
   }
 
   delete(event) {
-    this.dialogService.openConfirmDialog('Do you want to delete ?')
+    this.dialogService.openConfirmDialog('Do you want to delete blog: ' , event.title)
       .afterClosed().subscribe(res => {
-      if (res) {
-        this.blogSvr.delete(event.id).subscribe(() => {
-          this.blogList = this.blogList.filter(t => t.id !== event.id);
-          this.router.navigate(['/admin/list']);
-        });
-        this.imgSvc.delete(event.nameImg).subscribe();
-        this.notifi.showSuccess();
+        if (res) {
+          this.blogSvr.delete(event.id).subscribe(() => {
+            this.blogList = this.blogList.filter(t => t.id !== event.id);
+          });
+          this.imgSvc.delete(event.nameImg).subscribe();
+          this.notifi.showSuccess();
+        }
       }
-    });
+    );
   }
 }

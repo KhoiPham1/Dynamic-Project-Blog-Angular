@@ -10,10 +10,18 @@ table {
 }
 td, th {
   width: 16%;
+  text-align: center;
 }
 img{
   width: 100px;
   height: 100px;
   object-fit: cover;
   margin: 10px 0 10px 0;
+}
+::ng-deep .mat-sort-header-container{
+  display: flex;
+  justify-content: center;
+}
+.mat-header-cell{
+  text-align: center;
 }

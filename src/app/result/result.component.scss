@@ -1,6 +1,6 @@
-table{
+table {
+  margin-top: 40px;
   width: 100%;
-  margin: 30px;
 }
 th .mat-sort-header-sorted {
   color: black;
@@ -8,9 +8,15 @@ th .mat-sort-header-sorted {
 tr .mat-header-row{
   font-weight: bold;
 }
-.mat-table-sticky{
-  border-top: 1px solid #e0e0e0;
+td, th {
+  width: 20%;
+  text-align: center;
+}
+::ng-deep .mat-sort-header-container{
+  display: flex;
+  justify-content: center;
+}
+.mat-header-cell{
+  text-align: center;
 }
 
-.search {
-}

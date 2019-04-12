@@ -39,9 +39,12 @@
             Avatar
             <br>
             <button type="button" class="btn btn-dark " (click)="dkl.click()">Choose</button>
-            <input #dkl type="file" style="display: none;" (change)="onSelect($event)" >
+            <input #dkl type="file" style="display: none;" (change)="onSelect($event)" formControlName="nameImg">
           </label>
           <!--<img class="imgFix" src="http://sohanews.sohacdn.com/thumb_w/660/2017/tha1494565313-3484-1504932748314-190-0-562-600-crop-1504932752573.jpg">-->
+        </div>
+        <div *ngIf="form.get('nameImg').invalid && form.get('nameImg').touched" class="alert alert-danger">
+          Please choose file!
         </div>
       </div>
       <div *ngIf="isChoose" class="alert alert-danger">

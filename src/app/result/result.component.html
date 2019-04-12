@@ -1,6 +1,5 @@
 <div class="search"><h3 class="text-center">Tìm kiếm blog " {{name}} " có {{listBlog?.length}} kết quả</h3></div>
 <table mat-table [dataSource]="dataSource" matSort>
-
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>
       <mat-checkbox (change)="selectAll()"></mat-checkbox>
@@ -18,7 +17,7 @@
     </td>
     <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
-  <ng-container matColumnDef="category">
+  <ng-container matColumnDef="category.category">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
     <td mat-cell *matCellDef="let element">
       {{element.category.category}}
@@ -26,14 +25,14 @@
     <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
   <ng-container matColumnDef="update">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Update</th>
+    <th mat-header-cell *matHeaderCellDef>Update</th>
     <td mat-cell *matCellDef="let element">
       <a [routerLink]="['/admin', element.id, 'edit']">Edit</a>
     </td>
     <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
   <ng-container matColumnDef="delete">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
     <td mat-cell *matCellDef="let element">
       <button mat-icon-button (click)="delete(element)">
         <mat-icon>delete</mat-icon>
