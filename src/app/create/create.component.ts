@@ -16,6 +16,7 @@ export class CreateComponent implements OnInit {
   form: FormGroup;
   fileSelect: File;
   categoryList: Category[];
+  isChoose = true;
 
   constructor(private blogSvr: BlogService,
               private imageSvr: ImageService,
