@@ -17,12 +17,12 @@
 
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="blogControl" (change)="getName($event.target.value)">
+            <input matInput aria-label="State" [matAutocomplete]="auto" (focus)="focusInput($event)" [formControl]="blogControl" (change)="getName($event.target.value)">
             <mat-placeholder class="placeholder">
               <a [style.display]="display">Search</a>
             </mat-placeholder>
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let blog of filteredBlogs | async" [value]="blog.title">
+              <mat-option *ngFor="let blog of filteredBlogs | async" [value]="blog.title" (click)="chooseName($event.toElement.innerText)">
                 <span [innerHTML]="blog.title | bold: toHighlight"></span>
                 <span></span>
               </mat-option>

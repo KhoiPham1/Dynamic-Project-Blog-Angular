@@ -34,7 +34,7 @@ export class EditBlogComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       content: ['', [Validators.required, Validators.minLength(3)]],
-      category: [null, [Validators.required, Validators.minLength(3)]],
+      category: ['', [Validators.required, Validators.minLength(3)]],
       nameImg: [''],
       mode: ['']
     });
@@ -46,6 +46,7 @@ export class EditBlogComponent implements OnInit {
         this.category = next.category.category;
         this.form.patchValue(this.blog);
       });
+    this.blogService.getListCategory().subscribe(data => this.categoryList = data);
   }
 
   onSelect(event) {

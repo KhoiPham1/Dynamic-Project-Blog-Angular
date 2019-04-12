@@ -1,27 +1,31 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {BlogService} from '../blog.service';
 import {Iblog} from '../iblog';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {ImageService} from '../image.service';
 import {Router} from '@angular/router';
+import {NotificationService} from '../notification.service';
+import {DialogService} from '../dialog.service';
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent implements OnInit {
+export class ResultComponent implements OnInit, AfterViewInit {
 
   name: string;
   blogList: Iblog[];
   listBlog: Iblog[];
-  displayedColumn: string[] = ['action', 'title', 'category', 'update', 'delete'];
+  displayedColumn: string[] = ['action', 'title', 'category.category', 'update', 'delete'];
   dataSource: any;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private blogSvr: BlogService,
               private imgSvr: ImageService,
-              private router: Router) {
+              private router: Router,
+              private dialogService: DialogService,
+              private noti: NotificationService) {
     this.dataSource = new MatTableDataSource<Iblog>(this.blogList);
   }
 
@@ -46,28 +50,45 @@ export class ResultComponent implements OnInit {
   }
 
   delete(event) {
-    this.blogSvr.delete(event.id).subscribe(() => {
-      this.dataSource.data = this.dataSource.data.filter(t => t.id !== event.id);
-      this.router.navigate(['admin/list']).then(() => alert('deleted success'));
-    });
-    this.imgSvr.delete(event.nameImg).subscribe();
+    this.dialogService.openConfirmDialog('Do you want to delete blog: ' , event.title)
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.blogSvr.delete(event.id).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(t => t.id !== event.id);
+          });
+          this.imgSvr.delete(event.nameImg).subscribe();
+          this.noti.showSuccess();
+        }
+      }
+    );
   }
 
   deleteSelect() {
-    for (const elm of this.dataSource.data) {
-      if (elm.boxCheck === true) {
-        this.blogSvr.delete(elm.id).subscribe(() => {
-          this.dataSource.data = this.dataSource.data.filter(t => t.id !== elm.id);
-        });
-        this.imgSvr.delete(elm.nameImg).subscribe();
+    this.dialogService.openConfirmDialog('Do you want to delete all ?', '')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          for (const elm of this.dataSource.data) {
+            if (elm.boxCheck === true) {
+              this.blogSvr.delete(elm.id).subscribe(() => {
+                this.dataSource.data = this.dataSource.data.filter(t => t.id !== elm.id);
+              });
+              this.imgSvr.delete(elm.nameImg).subscribe();
+              this.noti.showSuccess();
+            }
+          }
+        }
       }
-    }
-    for (const elm of this.dataSource.data) {
-      if (elm.boxCheck === true) {
-        this.router.navigate(['admin/list']).then(() => alert('deleted success'));
-        break;
-      }
-    }
+    );
   }
-
+  ngAfterViewInit(): void {
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case 'category.category':
+          return item.category.category;
+        default:
+          return item[property];
+      }
+    };
+    this.dataSource.sort = this.sort;
+  }
 }

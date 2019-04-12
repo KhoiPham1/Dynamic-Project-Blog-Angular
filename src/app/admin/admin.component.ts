@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LoginService} from '../login.service';
 import {Iblog} from '../iblog';
 import {FormControl} from '@angular/forms';
@@ -26,13 +26,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.blogService.getList().subscribe(data => this.listBlog = data);
-
-    this.filteredBlogs = this.blogControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(blog => blog ? this.filterBlogs(blog) : this.listBlog.slice(0, 0))
-      );
   }
 
   getName(event) {
@@ -44,13 +37,26 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  focusInput(event) {
+    this.blogService.getList().subscribe(data => this.listBlog = data);
+
+    this.filteredBlogs = this.blogControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(blog => blog ? this.filterBlogs(blog) : this.listBlog.slice(0, 0))
+      );
+  }
+  chooseName(event) {
+    console.log(event);
+    this.name = event;
+  }
+
   search() {
-    console.log(this.name);
     localStorage.setItem('names', this.name);
     if (this.router.url !== '/admin/result') {
       this.router.navigate(['admin/result']);
     } else {
-    this.router.navigate(['admin/result']).then(() => location.reload());
+      this.router.navigate(['admin/result']).then(() => location.reload());
     }
 
   }
