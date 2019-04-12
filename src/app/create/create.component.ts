@@ -16,6 +16,7 @@ export class CreateComponent implements OnInit {
   form: FormGroup;
   fileSelect: File;
   categoryList: Category[];
+  isChoose = true;
 
   constructor(private blogSvr: BlogService,
               private imageSvr: ImageService,
@@ -38,6 +39,9 @@ export class CreateComponent implements OnInit {
 
   onSelect(event) {
     this.fileSelect = event.target.files[0];
+    if (this.fileSelect !== undefined) {
+      this.isChoose = false;
+    }
   }
   dat(event) {
     console.log(event);
